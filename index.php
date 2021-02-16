@@ -15,4 +15,4 @@ print_r($users);
 
 echo "Welcome " . $users[0]['first_name'];
 
-//SELECT * FROM final_users WHERE username=$_POST['username'] AND password=$_POST['password'];
+
