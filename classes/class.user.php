@@ -28,7 +28,7 @@ class User extends Database {
     }
 
  
-    public function sanitzie($item){
+    public function sanitize($item){
  
         return $this->conn->real_escape_string($item);
     }

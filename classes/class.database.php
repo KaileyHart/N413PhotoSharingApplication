@@ -14,7 +14,7 @@ class Database
     private $password;
     private $database;
     private $hostname;
-    private $conn;
+   // private $conn;
 
      function __construct()
     {
@@ -22,6 +22,7 @@ class Database
         $this->password = "";
         $this->database = "photo_share";
         $this->hostname = "localhost";
+        //$this->conn = "conn";
     }
 
     public function getSQL($sql)
@@ -32,9 +33,8 @@ class Database
             return "connection failed. " . $this->conn->connect_error;
         }
 
-        return $this->conn; 
-
-        $result = $this->conn->query($sql);
+        //return $this->conn; 
+         $result = $this->conn->query($sql);
 
         $results = array();
 
@@ -43,10 +43,12 @@ class Database
                 $results[] = $row;
             }
             return $results;
+           // print_r($results);
         }
+        //print_r($results);
     }
 
-
+   
     
 }
 
