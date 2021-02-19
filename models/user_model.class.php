@@ -41,21 +41,34 @@ class UserModel {
         //Retrieves and sanitizes user input
         $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
 		$password = trim(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
-        $lastname = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_STRING);
-        $firstname = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_STRING);
+        $lastname = filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_STRING);
+        $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
 
         //encode the password
         $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        echo "Username:" . $username . "<br>";
+        echo "Last Name:" . $lastname . "<br>";
+        echo "First Name:" . $firstname . "<br>";
+        echo "Password:" . $hash . "<br>";
+
+
+
 		
         //Inserts user input in db
-        $sql = "INSERT INTO " . $this->db->getUserTable() . " VALUES(NULL, '$username', '$hash', '$firstname', '$lastname')";
-        
-        //Runs the sql command and results with success or fail 
-        if($this->conn->query($sql) === TRUE) {
-            return true;
-        } else {
-            return false;
-        }
+        $sql = "INSERT INTO" . $this->db->getUserTable() . "VALUES (NULL, '$username', '$hash', '$firstname', '$lastname')";
+
+        echo "SQL:" . $sql;
+ 
+        //  $result = mysqli_query($this->conn, $sql);
+ 
+        //  $pk_user_id = mysqli_insert_id($this->conn);
+        //  if($pk_user_id) {
+        //      session_start();
+        //      $_SESSION['pk_user_id'] = $pk_user_id;
+        //      return $result;
+        //  }
+         return $result;
        
     }
 
@@ -73,7 +86,7 @@ class UserModel {
 
         //$results = array();
 
-        //If password is there, set a cookie? or session?
+        //If password is there, start a session with user id
         if($result AND $result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $hash = $row['password'];
