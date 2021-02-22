@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
  * Author: Kailey Hart
  * Date: 02-12-2021
@@ -12,52 +12,70 @@
 // require_once('views/login/login.class.php');
 
 
-class UserController {
+class UserController
+{
 
-    //Variables
-    private $user_model;
+  //Variables
+  private $user_model;
 
-    //construct
-    function __construct()
-    {
-        $this->user_model = new UserModel;
-    }
+  //construct
+  function __construct()
+  {
+    $this->user_model = new UserModel;
+  }
 
-    //Shows home page
-    function index() {
-        $main_view = new Index();
-        $main_view->show();
-    }
+  //Shows home page
+  function index()
+  {
+    $main_view = new Index();
+    $main_view->show();
+  }
 
-    //Calls register method from user model & shows Registration form
-    function register() {
-        $result = $this->user_model->register();
+  //Calls register method from user model & shows Registration form
+  function register()
+  {
+    $result = $this->user_model->register();
 
-        $main_view = new Register();
-        $main_view->show($result);
-    }
+    $main_view = new Register();
+    $main_view->show($result);
+  }
 
-    //register_confirm
+  function register_confirm()
+  {
+    $result = $this->user_model->register_confirm();
+    $result = "Something";
 
-    //Calls login method from user model & shows login form 
-    function login() {
-        $main_view = new Login();
-        $main_view->show();
-    }
+    $main_view = new RegisterConfirm();
+    $main_view->display();
+  }
 
-    //Authenticates user on login
-    function auth() {
-        $result = $this->user_model->login();
-        $main_view = new Auth();
-        $main_view->show($result);
-    }
+  //Calls login method from user model & shows login form 
+  function login()
+  {
+    $main_view = new Login();
+    $main_view->show();
+  }
 
-    //Allows user to logout
-    function logout() {}
+  //Authenticates user on login
+  function auth()
+  {
+    $result = $this->user_model->login();
+    $main_view = new Auth();
+    $main_view->show($result);
+  }
 
-    //Reset pass?
-    function reset() {}
+  //Allows user to logout
+  function logout()
+  {
+  }
 
-    //Show an error
-    function error() {}
+  //Reset pass?
+  function reset()
+  {
+  }
+
+  //Show an error
+  function error()
+  {
+  }
 }
