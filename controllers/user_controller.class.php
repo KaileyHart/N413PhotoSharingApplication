@@ -37,6 +37,8 @@ class UserController {
         $main_view->show($result);
     }
 
+    //register_confirm
+
     //Calls login method from user model & shows login form 
     function login() {
         $main_view = new Login();
