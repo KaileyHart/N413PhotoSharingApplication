@@ -8,18 +8,16 @@
 
 class RegisterConfirm extends MainView
 {
-  function display()
-  {
-    echo "<h3>Welcome h3</h3>";
-  }
-
-  function show()
+  function show($username)
   {
     parent::header();
-?>
-    <h1>Welcome</h1>
 
-<?php
+    echo "<pre>";
+    print_r($username);
+    echo "</pre>";
+
+    echo "<p>The last user added was: " . $username['username'] . "</p>";
+
     parent::footer();
   }
 }
