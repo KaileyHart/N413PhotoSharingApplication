@@ -66,6 +66,6 @@ class Database
       return "Error: " . $sql . "<br>" . mysqli_error($this->conn);
     }
 
-    return true;
+    return "this is from the database";
   }
 }

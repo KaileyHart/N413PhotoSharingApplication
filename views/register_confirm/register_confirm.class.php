@@ -3,19 +3,23 @@
  * Author: Kailey Hart
  * Date: 02-12-2021
  * Name: register_confirm.class.php
- * Description: Register page confirmation
+ * Description: RegisterConfirm page
 */
 
 class RegisterConfirm extends MainView
 {
+  function display()
+  {
+    echo "<h3>Welcome h3</h3>";
+  }
 
   function show()
   {
-
     parent::header();
+?>
+    <h1>Welcome</h1>
 
-    echo "Welcome";
-
+<?php
     parent::footer();
   }
 }

@@ -106,6 +106,15 @@ class MainView
 
     <?php
   }
+
+  function content()
+  {
+    ?>
+      <h2>This is the page content</h2>
+    <?php
+  }
+
+
   function footer()
   {
     ?>

@@ -42,10 +42,11 @@ class UserController
 
   function register_confirm()
   {
-    $this->user_model->register_confirm();
+    $result = $this->user_model->register_confirm();
+    $result = "Something";
 
     $main_view = new RegisterConfirm();
-    $main_view->show();
+    $main_view->display();
   }
 
   //Calls login method from user model & shows login form 

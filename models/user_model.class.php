@@ -73,9 +73,9 @@ class UserModel
     //Inserts user input in db
     $result = $this->db->insert_user($sql);
 
-    echo $result;
+    echo "result: " . $result;
 
-    return true;
+    return $result;
   }
 
   //Login user
