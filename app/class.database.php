@@ -68,4 +68,16 @@ class Database
 
     return "this is from the database";
   }
+
+  function get_last_username($sql)
+  {
+    $result = $this->conn->query($sql);
+    $row = $result->fetch_assoc();
+
+    if (!mysqli_query($this->conn, $sql)) {
+      return "Error: " . $sql . "<br>" . mysqli_error($this->conn);
+    }
+
+    return $row;
+  }
 }

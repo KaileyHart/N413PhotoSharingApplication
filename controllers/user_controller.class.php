@@ -11,6 +11,8 @@
 // require_once('views/register/register.class.php');
 // require_once('views/login/login.class.php');
 
+// comment out for your machine
+require_once('views/register_confirm/register_confirm.class.php');
 
 class UserController
 {
@@ -42,11 +44,11 @@ class UserController
 
   function register_confirm()
   {
-    $result = $this->user_model->register_confirm();
-    $result = "Something";
+    // $result = $this->user_model->register_confirm();
+    $username = $this->user_model->get_last_username();
 
     $main_view = new RegisterConfirm();
-    $main_view->display();
+    $main_view->show($username);
   }
 
   //Calls login method from user model & shows login form 
