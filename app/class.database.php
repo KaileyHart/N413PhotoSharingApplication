@@ -14,7 +14,7 @@ class Database
   private $param = array(
     'hostname' => 'localhost',
     'user' => 'root',
-    'password' => 'root',
+    'password' => '',
     'database' => 'photo_share',
     'userTbl' => 'final_users'
   );

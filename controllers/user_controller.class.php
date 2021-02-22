@@ -11,7 +11,7 @@
 // require_once('views/register/register.class.php');
 // require_once('views/login/login.class.php');
 
-
+require_once('views/register_confirm/register_confirm.class.php'); 
 class UserController
 {
 
