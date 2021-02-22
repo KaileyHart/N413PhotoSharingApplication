@@ -78,6 +78,20 @@ class UserModel
     return $result;
   }
 
+  function get_last_username()
+  {
+    $sql = "SELECT * FROM final_users ORDER BY pk_user_id DESC LIMIT 1";
+    echo "SQL:" . $sql . "<br>";
+    echo "<hr>";
+
+    //Inserts user input in db
+    $result = $this->db->get_last_username($sql);
+
+    // echo "result: " . $result;
+
+    return $result;
+  }
+
   //Login user
   function login()
   {
