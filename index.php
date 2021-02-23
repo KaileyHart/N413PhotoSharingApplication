@@ -48,14 +48,17 @@ switch ($action) {
     $user_controller->logout_confirm();
     break;
   case "profile":
-      $user_controller->profile();
-      break;
+    $user_controller->profile();
+    break;
   case "add_gallery":
-      $user_controller->add_gallery();
-      break;
+    $user_controller->add_gallery();
+    break;
+  case "single_gallery_view":
+    $user_controller->single_gallery_view();
+    break;
   case "add_image":
-      $user_controller->add_image();
-      break;
+    $user_controller->add_image();
+    break;
   case "reset":
     $user_controller->reset();
     break;

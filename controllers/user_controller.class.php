@@ -18,6 +18,7 @@ require_once('views/logout_confirm/logout_confirm.class.php');
 require_once('views/add_image/add_image.class.php');
 require_once('views/add_gallery/add_gallery.class.php');
 require_once('views/profile/profile.class.php');
+require_once('views/single_gallery_view/single_gallery_view.class.php');
 
 class UserController
 {
@@ -83,6 +84,12 @@ class UserController
    function add_gallery() {
     $this->user_model->add_gallery();
     $main_view = new AddGallery;
+    $main_view->show();
+  }
+  //Add gallery 
+  function single_gallery_view() {
+    $this->user_model->single_gallery_view();
+    $main_view = new SingleGallery;
     $main_view->show();
   }
 
