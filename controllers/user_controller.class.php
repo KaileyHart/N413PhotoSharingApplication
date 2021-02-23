@@ -15,6 +15,7 @@
 require_once('views/login_confirm/login_confirm.class.php');
 require_once('views/register_confirm/register_confirm.class.php');
 require_once('views/logout_confirm/logout_confirm.class.php');
+require_once('views/add_image/add_image.class.php');
 
 class UserController
 {
@@ -73,6 +74,13 @@ class UserController
   {
     $this->user_model->logout_confirm();
     $main_view = new LogoutConfirm;
+    $main_view->show();
+  }
+
+  //Add image to a gallery 
+  function add_image() {
+    $this->user_model->add_image();
+    $main_view = new AddImage;
     $main_view->show();
   }
 

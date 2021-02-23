@@ -130,4 +130,9 @@ class UserModel
     unset($_SESSION);
     session_destroy();
     }
+
+    //Adds an image to a gallery
+    function add_image() {
+      
+    }
 }
