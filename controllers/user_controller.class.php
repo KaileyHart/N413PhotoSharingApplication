@@ -12,7 +12,9 @@
 // require_once('views/login/login.class.php');
 
 // comment out for your machine
+require_once('views/login_confirm/login_confirm.class.php');
 require_once('views/register_confirm/register_confirm.class.php');
+require_once('views/logout_confirm/logout_confirm.class.php');
 
 class UserController
 {
@@ -59,16 +61,19 @@ class UserController
   }
 
   //Authenticates user on login
-  function auth()
+  function login_confirm()
   {
     $result = $this->user_model->login();
-    $main_view = new Auth();
+    $main_view = new LoginConfirm();
     $main_view->show($result);
   }
 
   //Allows user to logout
-  function logout()
+  function logout_confirm()
   {
+    $this->user_model->logout_confirm();
+    $main_view = new LogoutConfirm;
+    $main_view->show();
   }
 
   //Reset pass?

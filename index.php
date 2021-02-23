@@ -41,11 +41,11 @@ switch ($action) {
   case "login":
     $user_controller->login();
     break;
-  case "verify":
-    $user_controller->auth();
+  case "login_confirm":
+    $user_controller->login_confirm();
     break;
-  case "logout":
-    $user_controller->logout();
+  case "logout_confirm":
+    $user_controller->logout_confirm();
     break;
   case "reset":
     $user_controller->reset();

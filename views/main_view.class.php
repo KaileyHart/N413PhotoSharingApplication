@@ -92,7 +92,7 @@ class MainView
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <li><a class="dropdown-item" href="index.php?action=login">Login</a></li>
                 <li><a class="dropdown-item" href="index.php?action=register">Register</a></li>
-                <li><a class="dropdown-item" href="#">Logout</a></li>
+                <li><a class="dropdown-item" href="index.php?action=logout_confirm">Logout</a></li>
                 <li><a class="dropdown-item" href="#">Profile</a></li>
               </ul>
             </li>

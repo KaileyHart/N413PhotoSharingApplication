@@ -22,11 +22,6 @@ class UserModel
     // $this->conn = $this->db->getSQL();
   }
 
-  //Logout user
-  function logout()
-  {
-  }
-
   //Delete user
   function delete()
   {
@@ -43,6 +38,7 @@ class UserModel
     // we don't need to do anything here
   }
 
+  //Registers user and shows confirmation page
   function register_confirm()
   {
     //Variables
@@ -78,6 +74,7 @@ class UserModel
     return $result;
   }
 
+  //Returns the last username added to the db
   function get_last_username()
   {
     $sql = "SELECT * FROM final_users ORDER BY pk_user_id DESC LIMIT 1";
@@ -94,6 +91,12 @@ class UserModel
 
   //Login user
   function login()
+  {
+    //Need anything ?
+  }
+
+  //Login Confirmation
+  function login_confirm()
   {
     //Retrieves user and pass from db
     $username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING));
@@ -119,4 +122,12 @@ class UserModel
       return false;
     }
   }
+
+    //Logout user and show confirmation page
+    function logout_confirm()
+    {
+    session_start();
+    unset($_SESSION);
+    session_destroy();
+    }
 }

@@ -3,7 +3,7 @@
  * Author: Kailey Hart
  * Date: 02-12-2021
  * Name: register_confirm.class.php
- * Description: RegisterConfirm page
+ * Description: Confirms user registration and outputs username
 */
 
 class RegisterConfirm extends MainView
