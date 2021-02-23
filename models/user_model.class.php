@@ -124,8 +124,7 @@ class UserModel
   }
 
     //Logout user and show confirmation page
-    function logout_confirm()
-    {
+    function logout_confirm() {
     session_start();
     unset($_SESSION);
     session_destroy();
@@ -133,6 +132,16 @@ class UserModel
 
     //Adds an image to a gallery
     function add_image() {
+
+    }
+
+     //Adds gallery
+     function add_gallery() {
       
+    }
+
+     //Adds an image to a gallery
+     function profile() {
+      //May not need
     }
 }

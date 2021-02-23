@@ -47,7 +47,13 @@ switch ($action) {
   case "logout_confirm":
     $user_controller->logout_confirm();
     break;
-    case "add_image":
+  case "profile":
+      $user_controller->profile();
+      break;
+  case "add_gallery":
+      $user_controller->add_gallery();
+      break;
+  case "add_image":
       $user_controller->add_image();
       break;
   case "reset":

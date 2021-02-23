@@ -16,6 +16,8 @@ require_once('views/login_confirm/login_confirm.class.php');
 require_once('views/register_confirm/register_confirm.class.php');
 require_once('views/logout_confirm/logout_confirm.class.php');
 require_once('views/add_image/add_image.class.php');
+require_once('views/add_gallery/add_gallery.class.php');
+require_once('views/profile/profile.class.php');
 
 class UserController
 {
@@ -77,12 +79,27 @@ class UserController
     $main_view->show();
   }
 
+   //Add gallery 
+   function add_gallery() {
+    $this->user_model->add_gallery();
+    $main_view = new AddGallery;
+    $main_view->show();
+  }
+
   //Add image to a gallery 
   function add_image() {
     $this->user_model->add_image();
     $main_view = new AddImage;
     $main_view->show();
   }
+
+  //Shows user profile
+  function profile() {
+    $this->user_model->profile();
+    $main_view = new Profile;
+    $main_view->show();
+  }
+
 
   //Reset pass?
   function reset()
