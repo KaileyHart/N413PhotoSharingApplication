@@ -68,12 +68,13 @@ class UserModel
 
     //Inserts user input in db
     $result = $this->db->insert_user($sql);
-    
+    echo "result:" . $result . "<br>";
+
 
     $user_id = mysqli_insert_id($this->conn);
-    if($user_id) {
+    if ($user_id) {
       session_start();
-      $_SESSION["pk_user+id"] = $user_id;
+      $_SESSION["pk_user_id"] = $user_id;
     }
 
     echo "result: " . $result;
@@ -96,8 +97,6 @@ class UserModel
     return $result;
   }
 
- 
-
   //Login user
   function login()
   {
@@ -115,54 +114,45 @@ class UserModel
     $sql = "SELECT * FROM " . $this->db->getUserTable() . "WHERE username='$username'";
 
     //Runs the sql statement
+    //$result = mysqli_query($this->conn, $sql);
     $result = $this->conn->query($sql);
-    $row = $result->fetch_assoc();
+    $row = mysqli_fetch_array($result, MYSQLI_BOTH);
 
-    if(password_verify($password, $row["password"])){
+    echo "result:" . $result . "<br>";
+    if ($row) {
       session_start();
       $_SESSION["pk_user_id"] = $row["id"];
-  } 
-  
+   
+    }
+}
 
-    //$results = array();
 
-    //If password is there, start a session with user id
-    // if ($result and $result->num_rows > 0) {
-    //   $row = $result->fetch_assoc();
-    //   $hash = $row['password'];
-
-    //   if (password_verify($password, $hash)) {
-    //     session_start();
-    //     $_SESSION["pk_user_id"] = $row["id"];
-    //     return true;
-    //   }
-    //   return false;
-    // }
-  }
-
-    //Logout user and show confirmation page
-    function logout_confirm() {
+  //Logout user and show confirmation page
+  function logout_confirm()
+  {
     session_start();
     unset($_SESSION);
     session_destroy();
-    }
+  }
 
-    //Adds an image to a gallery
-    function add_image() {
+  //Adds an image to a gallery
+  function add_image()
+  {
+  }
 
-    }
+  function add_gallery()
+  {
+    //May not need?
+  }
 
-    function add_gallery() {
-//May not need?
-    }
+  //Adds gallery
+  function single_gallery_view()
+  {
 
-     //Adds gallery
-     function single_gallery_view() {
-      
     //Variables
     $galleryName = '';
     $tagName = '?';
-   
+
 
     //Retrieves and sanitizes user input
     $galleryName = trim(filter_input(INPUT_POST, "galleryName", FILTER_SANITIZE_STRING));
@@ -182,10 +172,11 @@ class UserModel
     echo "result: " . $result;
 
     return $result;
-    }
+  }
 
-     //Adds an image to a gallery
-     function profile() {
-      //May not need
-    }
+  //Adds an image to a gallery
+  function profile()
+  {
+    //May not need
+  }
 }

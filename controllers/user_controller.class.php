@@ -50,7 +50,7 @@ class UserController
 
   function register_confirm()
   {
-    // $result = $this->user_model->register_confirm();
+    $result = $this->user_model->register_confirm();
     $username = $this->user_model->get_last_username();
 
     $main_view = new RegisterConfirm();
@@ -67,7 +67,7 @@ class UserController
   //Authenticates user on login
   function login_confirm()
   {
-    $result = $this->user_model->login();
+    $result = $this->user_model->login_confirm();
     $main_view = new LoginConfirm();
     $main_view->show($result);
   }
@@ -106,7 +106,6 @@ class UserController
     $main_view = new Profile;
     $main_view->show();
   }
-
 
   //Reset pass?
   function reset()
