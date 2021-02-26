@@ -10,7 +10,7 @@ class LoginConfirm extends MainView
 {
     function show()
     {
-        session_start();
+        print_r($_SESSION["pk_user_id"]);
         parent::header();
         if(isset($_SESSION["pk_user_id"])){
             echo '<h3>Congrats! You Logged In.</h3>';

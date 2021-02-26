@@ -10,7 +10,12 @@ class Profile extends MainView
 {
     function show()
     {
+        session_start();
         parent::header();
+        if(!isset($_SESSION["pk_user_id"])){
+            echo '<h3>You are not logged in. Check your credentials and try again.</h3>
+            <a href="index.php?action=register"><button class="btn btn-dark mt-5">Try Again</button></a>';
+        }
 ?>
 
         <div class="profile__container">
@@ -33,7 +38,9 @@ class Profile extends MainView
 
             <div class="middle">
                 <h2>Your Galleries</h2>
-                <div class="gallery"></div>
+                <div class="gallery">
+                
+                </div>
             </div>
 
             <div class="right">

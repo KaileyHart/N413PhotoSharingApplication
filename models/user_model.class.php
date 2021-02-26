@@ -73,7 +73,7 @@ class UserModel
 
     $user_id = mysqli_insert_id($this->conn);
     if ($user_id) {
-      session_start();
+      //session_start();
       $_SESSION["pk_user_id"] = $user_id;
     }
 
@@ -110,20 +110,44 @@ class UserModel
     $username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING));
     $password = trim(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
 
+$sql = "SELECT password FROM " . $this->db->getUserTable() . " WHERE username='$username'";
+
+  $result = $this->conn->query($sql);
+  $row = mysqli_fetch_assoc($result);
+  print_r($row['password']);
+  
+  $hash = $row['password'];
+
+if(password_verify($password, $hash)) {
+  $correctPassword = true;
+} else {
+  $correctPassword = false;
+}
+
+echo 'correct password: ' . $correctPassword;
+if($correctPassword) {
+
+
     //Selects user data from the final_users table
-    $sql = "SELECT * FROM " . $this->db->getUserTable() . "WHERE username='$username'";
+    $sql = "SELECT * FROM " . $this->db->getUserTable() . " WHERE username='$username'";
+
+    print_r($sql);
 
     //Runs the sql statement
-    //$result = mysqli_query($this->conn, $sql);
+    //$result = mysqli_query($this->conn = $this->db->getSQL(), $sql);
     $result = $this->conn->query($sql);
-    $row = mysqli_fetch_array($result, MYSQLI_BOTH);
+    $row = mysqli_fetch_assoc($result);
 
-    echo "result:" . $result . "<br>";
-    if ($row) {
-      session_start();
-      $_SESSION["pk_user_id"] = $row["id"];
+    //echo "result:" . $result . "<br>";
+
+    print_r($row);
+    // if ($result) {
+     session_start();
+     $_SESSION["pk_user_id"] = $row["pk_user_id"];
    
-    }
+    // }
+}
+
 }
 
 
@@ -151,18 +175,14 @@ class UserModel
 
     //Variables
     $galleryName = '';
-    $tagName = '?';
-
 
     //Retrieves and sanitizes user input
     $galleryName = trim(filter_input(INPUT_POST, "galleryName", FILTER_SANITIZE_STRING));
-    $tagName = trim(filter_input(INPUT_POST, 'tagName', FILTER_SANITIZE_STRING));
 
     // displays information
     echo "Gallery Name:" . $galleryName . "<br>";
-    echo "Tag Name:" . $tagName . "<br>";
-
-    $sql = "INSERT INTO " . $this->db->getGalleryTable() . " (pk_gallery_id, fk_user_id, gallery_name, tag_name) VALUES ('Null','1','$galleryName', '$tagName')";
+    session_start();
+    $sql = "INSERT INTO " . $this->db->getGalleryTable() . " (fk_user_id, gallery_name) VALUES ('" . $_SESSION['pk_user_id'] . "','$galleryName')";
     echo "SQL:" . $sql . "<br>";
     echo "<hr>";
 
@@ -178,5 +198,31 @@ class UserModel
   function profile()
   {
     //May not need
+  }
+
+  function get_single_user_galleries() { }
+
+  function get_all_galleries() {
+
+    $sql = "SELECT * FROM final_gallery";
+
+    $result = $this->conn->query($sql);
+   
+    if ($result->num_rows > 0) {
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+        echo "Gallery Name: " . $row["gallery_name"]. " - Usr ID: " . $row["fk_user_id"]. "<br>";
+      }
+    } else {
+      echo "0 results";
+    }
+    //$conn->close();
+
+  //   while ($row = $result->fetch_assoc()) {
+  //     echo 'Name and surname: '.$row['name'].' '.$row['surname'].'<br>';
+  //     echo 'Age: '.$row['age'].'<br>'; // Prints info from 'age' column
+  // }
+
+    
   }
 }

@@ -10,7 +10,7 @@ class RegisterConfirm extends MainView
 {
   function show($username )
   {
-    //session_start();
+   
     parent::header();
 
     echo "<pre>";

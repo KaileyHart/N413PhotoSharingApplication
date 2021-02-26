@@ -35,8 +35,9 @@ class UserController
   //Shows home page
   function index()
   {
+    $allGalleries = $this->user_model->get_all_galleries();
     $main_view = new Index();
-    $main_view->show();
+    $main_view->show($allGalleries);
   }
 
   //Calls register method from user model & shows Registration form

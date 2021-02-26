@@ -69,6 +69,10 @@ class Database
     }
   }
 
+  function get_user($sql) {
+    
+  }
+
   //returns the gallery table
   function getGalleryTable()
   {
@@ -95,4 +99,6 @@ class Database
 
     return $row;
   }
+
+ 
 }

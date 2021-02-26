@@ -8,11 +8,16 @@
 
 class LogoutConfirm extends MainView
 {
-  function show()
- 
-  {  session_start();
+  function __construct()
+  {
+    unset($_SESSION["pk_user_id"]);
     session_destroy();
     
+  }
+  
+  function show()
+ 
+  {  
     parent::header();
     ?>
 
@@ -20,9 +25,9 @@ class LogoutConfirm extends MainView
     <?php
  
  if(isset($_SESSION["pk_user_id"])){
-    echo '<h3>Something went wrong here. Try to log out again.</h3>';
+    echo "<h3>Something went wrong here. Try to log out again.</h3>";
 }else{
-    echo '<h3>You logged out.</h3>';
+    echo "<h3>You logged out.</h3>";
 }
 
 

@@ -8,8 +8,9 @@
 //require_once('views/main_view.class.php');
 
 class Index extends MainView {
-    function show() {
+    function show($allGalleries) {
         parent::header();
+        print_r($allGalleries);
     ?>
     <div></div>
 

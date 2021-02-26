@@ -8,6 +8,17 @@
 
 class MainView
 {
+  function __construct() 
+  {
+    //session_start();
+    
+  }
+
+  // function __destruct()
+  // {
+  //   session_destroy();
+  // }
+
   //Header Template
   function header()
   {
