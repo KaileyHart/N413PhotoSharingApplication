@@ -110,45 +110,44 @@ class UserModel
     $username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING));
     $password = trim(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
 
-$sql = "SELECT password FROM " . $this->db->getUserTable() . " WHERE username='$username'";
+    $sql = "SELECT password FROM " . $this->db->getUserTable() . " WHERE username='$username'";
 
-  $result = $this->conn->query($sql);
-  $row = mysqli_fetch_assoc($result);
-  print_r($row['password']);
-  
-  $hash = $row['password'];
-
-if(password_verify($password, $hash)) {
-  $correctPassword = true;
-} else {
-  $correctPassword = false;
-}
-
-echo 'correct password: ' . $correctPassword;
-if($correctPassword) {
-
-
-    //Selects user data from the final_users table
-    $sql = "SELECT * FROM " . $this->db->getUserTable() . " WHERE username='$username'";
-
-    print_r($sql);
-
-    //Runs the sql statement
-    //$result = mysqli_query($this->conn = $this->db->getSQL(), $sql);
     $result = $this->conn->query($sql);
     $row = mysqli_fetch_assoc($result);
+    print_r($row['password']);
 
-    //echo "result:" . $result . "<br>";
+    $hash = $row['password'];
 
-    print_r($row);
-    // if ($result) {
-     session_start();
-     $_SESSION["pk_user_id"] = $row["pk_user_id"];
-   
-    // }
-}
+    if (password_verify($password, $hash)) {
+      $correctPassword = true;
+    } else {
+      $correctPassword = false;
+    }
 
-}
+    echo 'correct password: ' . $correctPassword;
+    if ($correctPassword) {
+
+
+      //Selects user data from the final_users table
+      $sql = "SELECT * FROM " . $this->db->getUserTable() . " WHERE username='$username'";
+
+      print_r($sql);
+
+      //Runs the sql statement
+      //$result = mysqli_query($this->conn = $this->db->getSQL(), $sql);
+      $result = $this->conn->query($sql);
+      $row = mysqli_fetch_assoc($result);
+
+      //echo "result:" . $result . "<br>";
+
+      print_r($row);
+      // if ($result) {
+      session_start();
+      $_SESSION["pk_user_id"] = $row["pk_user_id"];
+
+      // }
+    }
+  }
 
 
   //Logout user and show confirmation page
@@ -200,29 +199,41 @@ if($correctPassword) {
     //May not need
   }
 
-  function get_single_user_galleries() { }
+  function get_single_user_galleries()
+  {
+    session_start();
 
-  function get_all_galleries() {
-
-    $sql = "SELECT * FROM final_gallery";
+    $user_id = $_SESSION["pk_user_id"];
+    $sql = "SELECT * FROM final_gallery WHERE fk_user_id = $user_id";
 
     $result = $this->conn->query($sql);
-   
+
     if ($result->num_rows > 0) {
       // output data of each row
-      while($row = $result->fetch_assoc()) {
-        echo "Gallery Name: " . $row["gallery_name"]. " - Usr ID: " . $row["fk_user_id"]. "<br>";
+      while ($row = $result->fetch_assoc()) {
+        echo "Gallery Name: " . $row["gallery_name"] . " - Usr ID: " . $row["fk_user_id"] . "<br>";
       }
     } else {
       echo "0 results";
     }
-    //$conn->close();
-
-  //   while ($row = $result->fetch_assoc()) {
-  //     echo 'Name and surname: '.$row['name'].' '.$row['surname'].'<br>';
-  //     echo 'Age: '.$row['age'].'<br>'; // Prints info from 'age' column
-  // }
-
-    
   }
+
+  function get_all_galleries()
+  {
+
+    $sql = "SELECT * FROM final_gallery";
+
+    $result = $this->conn->query($sql);
+
+    if ($result->num_rows > 0) {
+      // output data of each row
+      while ($row = $result->fetch_assoc()) {
+        echo "Gallery Name: " . $row["gallery_name"] . " - Usr ID: " . $row["fk_user_id"] . "<br>";
+      }
+    } else {
+      echo "0 results";
+    }
+  }
+
+  
 }

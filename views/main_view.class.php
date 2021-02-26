@@ -40,6 +40,7 @@ class MainView
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       
       <link rel="stylesheet" href="dist/css/profile.css" type="text/css"/>
+      <link rel="stylesheet" href="dist/css/single_gallery.css" type="text/css"/>
 
 
 
@@ -51,6 +52,11 @@ class MainView
       </script>
 
       <style>
+
+        .space {
+          margin-bottom: 2%;
+        }
+
         nav {
           padding: 20px;
         }
@@ -113,6 +119,7 @@ class MainView
 
         </div>
       </nav>
+      <div class="space"></div>
 
 
 

@@ -10,7 +10,7 @@ class Profile extends MainView
 {
     function show()
     {
-        session_start();
+       
         parent::header();
         if(!isset($_SESSION["pk_user_id"])){
             echo '<h3>You are not logged in. Check your credentials and try again.</h3>

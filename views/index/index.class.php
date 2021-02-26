@@ -10,9 +10,9 @@
 class Index extends MainView {
     function show($allGalleries) {
         parent::header();
-        print_r($allGalleries);
+        
     ?>
-    <div></div>
+    <div><?php echo $allGalleries ?></div>
 
     <?php
     parent::footer();
