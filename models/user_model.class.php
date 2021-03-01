@@ -206,16 +206,22 @@ class UserModel
     $user_id = $_SESSION["pk_user_id"];
     $sql = "SELECT * FROM final_gallery WHERE fk_user_id = $user_id";
 
-    $result = $this->conn->query($sql);
+    $results = $this->conn->query($sql);
 
-    if ($result->num_rows > 0) {
-      // output data of each row
-      while ($row = $result->fetch_assoc()) {
-        echo "Gallery Name: " . $row["gallery_name"] . " - Usr ID: " . $row["fk_user_id"] . "<br>";
-      }
-    } else {
-      echo "0 results";
-    }
+    return $results;
+
+      //if ($results->num_rows > 0) {
+            // output data of each row
+            //$galleries = array();
+           // while ($row = $results->fetch_assoc()) {
+              //$galleries[] = $row;
+              //echo "Gallery Name: " . $row["gallery_name"] . " - Usr ID: " . $row["fk_user_id"] . "<br>";
+             //return $galleries;
+            //}
+        //   } else {
+        //     echo "0 results";
+        //   }
+    
   }
 
   function get_all_galleries()

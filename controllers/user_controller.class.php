@@ -103,10 +103,10 @@ class UserController
 
   //Shows user profile
   function profile() {
-    $userGalleries = $this->user_model-> get_single_user_galleries();
+    $results = $this->user_model-> get_single_user_galleries();
     $this->user_model->profile();
     $main_view = new Profile;
-    $main_view->show($userGalleries);
+    $main_view->show($results);
   }
 
   //Reset pass?
