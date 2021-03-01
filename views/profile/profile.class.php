@@ -8,7 +8,7 @@
 
 class Profile extends MainView
 {
-    function show($results)
+    function show($results, $username)
     {
 
 
@@ -28,7 +28,7 @@ class Profile extends MainView
                         <img class="left__image" alt="profile image" src="dist/images/profile-img.jpg">
                     </div>
                     <div class="left__buttons">
-                        <p>Username</p>
+                        <p><?=$username['username']?></p>
                         <button><a href="index.php?action=add_gallery"> + Add gallery</a> </button>
                         <button><a href="index.php?action=edit_profile">Edit Profile</a> </button>
                     </div>

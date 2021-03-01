@@ -82,20 +82,7 @@ class UserModel
     return $result;
   }
 
-  //Returns the last username added to the db
-  function get_last_username()
-  {
-    $sql = "SELECT * FROM final_users ORDER BY pk_user_id DESC LIMIT 1";
-    echo "SQL:" . $sql . "<br>";
-    echo "<hr>";
-
-    //Inserts user input in db
-    $result = $this->db->get_last_username($sql);
-
-    // echo "result: " . $result;
-
-    return $result;
-  }
+  
 
   //Login user
   function login()
@@ -199,14 +186,28 @@ class UserModel
     //May not need
   }
 
+  //Returns the username
+  function get_username()
+  {
+    $user_id = $_SESSION["pk_user_id"];
+    $userSql = "SELECT * FROM final_users WHERE pk_user_id = $user_id";
+    echo "SQL:" . $userSql . "<br>";
+    echo "<hr>";
+
+    //Inserts user input in db
+    $username = $this->db->get_last_username($userSql);
+
+    return $username;
+  }
+
   function get_single_user_galleries()
   {
     session_start();
 
     $user_id = $_SESSION["pk_user_id"];
-    $sql = "SELECT * FROM final_gallery WHERE fk_user_id = $user_id";
-
-    $results = $this->conn->query($sql);
+    $gallerySql = "SELECT * FROM final_gallery WHERE fk_user_id = $user_id";
+   
+    $results = $this->conn->query($gallerySql);
 
     return $results;
 
