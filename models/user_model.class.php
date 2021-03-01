@@ -204,10 +204,42 @@ class UserModel
     $user_id = $_SESSION["pk_user_id"];
     $sql = "SELECT * FROM final_users WHERE pk_user_id = $user_id";
 
-    //Inserts user input in db
+   //to db
     $username = $this->db->get_last_username($sql);
 
     return $username;
+  }
+
+  function get_gallery_id() {
+
+  }
+
+  function get_gallery_name() {
+    session_start();
+
+    $user_id = $_SESSION["pk_user_id"];
+    $gallerySql = "SELECT * FROM final_gallery WHERE fk_user_id = $user_id";
+
+    $results = $this->conn->query($gallerySql);
+
+    if ($results === 0) {
+      echo "No galleries were found. Please add one.";
+  } else {
+
+      foreach ($results as $result) {
+          $galleryId = $result['pk_gallery_id'];
+
+      }
+    }
+
+    //Need to somehow grab the gallery id
+    
+    $sql = "SELECT * FROM final_gallery WHERE pk_gallery_id = $galleryId";
+
+    //to db
+    $galleryName = $this->db->get_gallery_name($sql);
+
+    return $galleryName;
   }
 
 
