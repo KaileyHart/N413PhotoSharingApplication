@@ -10,6 +10,7 @@ class LogoutConfirm extends MainView
 {
   function __construct()
   {
+    session_start();
     unset($_SESSION["pk_user_id"]);
     session_destroy();
     

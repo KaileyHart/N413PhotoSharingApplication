@@ -12,7 +12,7 @@ class Register extends MainView
   {
     parent::header();
 ?>
-    <form method="POST" action="index.php?action=register_confirm">
+    <form method="POST" action="index.php?action=register_confirm" enctype="multipart/form-data">
       <div class="row mt-5">
         <div class="col-4"></div>
         <div id="form-container" class="col-4">
@@ -20,7 +20,8 @@ class Register extends MainView
           Last Name: <input type="text" id="lastname" name="lastname" class="form-control" value="" placeholder="Enter Last Name" required /><br />
           User Name: <input type="text" id="username" name="username" class="form-control" value="" placeholder="Enter User Name" required /><br />
           Password: <input type="password" id="password" name="password" class="form-control" value="" placeholder="Enter Password" required /><br />
-          <button type="submit" id="submit" class="btn btn-dark float-right">Register</button>
+          Upload Image: <input type="file" id="image" name="image" class="form-control" value="" placeholder="Add a Profile Image" optional/><br />
+          <button type="submit" id="submit" name="submit" class="btn btn-dark float-right">Register</button>
         </div>
       </div>
     </form>

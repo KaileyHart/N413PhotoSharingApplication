@@ -52,10 +52,9 @@ class UserController
   function register_confirm()
   {
     $result = $this->user_model->register_confirm();
-    $username = $this->user_model->get_last_username();
 
     $main_view = new RegisterConfirm();
-    $main_view->show($username);
+    $main_view->show();
   }
 
   //Calls login method from user model & shows login form 
@@ -103,11 +102,12 @@ class UserController
 
   //Shows user profile
   function profile() {
-    $results = $this->user_model-> get_single_user_galleries();
-    $username = $this->user_model-> get_username();
+    $results = $this->user_model->get_single_user_galleries();
+    $username = $this->user_model->get_last_username();
+    $image = $this->user_model->get_profile_img();
     $this->user_model->profile();
     $main_view = new Profile;
-    $main_view->show($results, $username);
+    $main_view->show($results, $username, $image);
   }
 
   //Reset pass?

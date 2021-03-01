@@ -8,16 +8,15 @@
 
 class RegisterConfirm extends MainView
 {
-  function show($username )
+  function show()
   {
    
     parent::header();
 
     echo "<pre>";
-    print_r($username);
     echo "</pre>";
 
-    echo "<p>The last user added was: " . $username['username'] . "</p>";
+    //echo "<p>The last user added was: " . $username['username'] . "</p>";
 
     if(isset($_SESSION["pk_user_id"])){
       echo '<h3>Congrats! You registered.</h3>';

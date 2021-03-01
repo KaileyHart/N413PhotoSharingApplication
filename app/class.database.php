@@ -100,5 +100,17 @@ class Database
     return $row;
   }
 
+  function get_profile_img($sql)
+  {
+    $result = $this->conn->query($sql);
+    $row = $result->fetch_assoc();
+
+    if (!mysqli_query($this->conn, $sql)) {
+      return "Error: " . $sql . "<br>" . mysqli_error($this->conn);
+    }
+
+    return $row;
+  }
+
  
 }
