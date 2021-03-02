@@ -45,27 +45,23 @@ class UserController
   function register()
   {
     $result = $this->user_model->register();
-
     $main_view = new Register();
     $main_view->show($result);
   }
 
   function register_confirm()
   {
-    $result = $this->user_model->register_confirm();
-
+    //$result = $this->user_model->register_confirm();
     $main_view = new RegisterConfirm();
     $main_view->show();
   }
 
-  //Calls login method from user model & shows login form 
   function login()
   {
     $main_view = new Login();
     $main_view->show();
   }
 
-  //Authenticates user on login
   function login_confirm()
   {
     $result = $this->user_model->login_confirm();
@@ -97,7 +93,6 @@ class UserController
 
   //Add image to a gallery 
   function add_image() {
-  
     $galleryName = $this->user_model->single_gallery_view();
     $this->user_model->add_image();
     $main_view = new AddImage;
