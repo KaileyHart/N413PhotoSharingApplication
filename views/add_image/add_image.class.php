@@ -9,11 +9,11 @@
 
 class AddImage extends MainView {
     function show($galleryName) {
-        echo "gallery name: " . $galleryName['gallery_name'];
+        echo "gallery name: " . $galleryName[0]['gallery_name'];
         parent::header();
     ?>
-    <h2>Add Image to <?=$galleryName['gallery_name']?></h2>
-    <form method="POST" action="index.php?action=single_gallery_view">
+    <h2>Add Image to <?=$galleryName[0]['gallery_name']?></h2>
+    <form method="POST" action="index.php?action=profile">
     <div class="row mt-5">
         <div class="col-4"></div>
         <div id="form-container" class="col-4">

@@ -97,7 +97,8 @@ class UserController
 
   //Add image to a gallery 
   function add_image() {
-    $galleryName = $this->user_model->get_gallery_name();
+  
+    $galleryName = $this->user_model->single_gallery_view();
     $this->user_model->add_image();
     $main_view = new AddImage;
     $main_view->show($galleryName);

@@ -17,7 +17,10 @@ class Database
     'password' => '',
     'database' => 'photo_share',
     'userTbl' => 'final_users',
-    'galleryTbl' => 'final_gallery'
+    'galleryTbl' => 'final_gallery',
+    'imgTbl' => 'final_images'
+    
+
   );
 
   //Database connection & instance
@@ -69,6 +72,14 @@ class Database
     }
   }
 
+  function insert_img($sql)
+  {
+
+    if (!mysqli_query($this->conn, $sql)) {
+      return "Error: " . $sql . "<br>" . mysqli_error($this->conn);
+    }
+  }
+
   function get_user($sql) {
     
   }
@@ -78,6 +89,12 @@ class Database
   {
     return $this->param['galleryTbl'];
   }
+
+   //returns the gallery table
+   function getImgTable()
+   {
+     return $this->param['imgTbl'];
+   }
 
   //Inserts gallery into DB
   function insert_gallery($sql)

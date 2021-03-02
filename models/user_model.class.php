@@ -160,6 +160,73 @@ class UserModel
   //Adds an image to a gallery
   function add_image()
   {
+    session_start();
+    // if ($_GET["id"]) {
+    //   $sql = "SELECT * FROM final_gallery WHERE fk_user_id = '" . $_SESSION['pk_user_id'] . "' AND pk_gallery_id = '" . $_GET["id"] . "'";
+    //   echo "SQL:" . $sql . "<br>";
+    //   echo "<hr>";
+    //   $result = $this->conn->query($sql);
+
+    //   $galleryInfo = array();
+
+    //   while ($row = $result->fetch_assoc()) {
+    //     $galleryInfo[] = $row;
+
+    //     //echo "Gallery Name: " . $row["gallery_name"] . " - Usr ID: " . $row["fk_user_id"] . "<br>" 
+    //   }
+    //   //print_r($galleryInfo);
+    //   return $galleryInfo;
+
+      if (isset($_POST['submit'])) {
+
+        //Variables
+        $description = '';
+        $tag = '';
+        //Retrieves and sanitizes user input
+        $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING);
+        $tag = filter_input(INPUT_POST, "tag", FILTER_SANITIZE_STRING);
+  
+        $image = $_FILES['image']['name'];
+        $tempname = $_FILES["image"]["tmp_name"];
+        $folder = "dist/images/" . $image;
+  
+  
+        echo $image;
+        echo $description;
+        //echo "Image: <img src='dist/images/" . $image['user_img'] . " ><br><br>";
+  
+        $sql = "INSERT INTO " . $this->db->getImgTbl() . " ('img_path', 'img_alt') VALUES ( '$image', '$description' )";
+        echo "SQL:" . $sql . "<br>";
+        echo "<hr>";
+  
+        if (move_uploaded_file($tempname, $folder)) {
+          echo "Image uploaded successfully";
+        } else {
+          echo "Failed to upload image";
+        }
+  
+        //Inserts user input in db
+        $result = $this->db->insert_img($sql);
+  
+  
+  
+        echo "result: " . $result;
+  
+        return $result;
+      }
+
+      //print_r($row);
+     else {
+      echo "error";
+      // $sql = "INSERT INTO " . $this->db->getGalleryTable() . " (fk_user_id, gallery_name) VALUES ('" . $_SESSION['pk_user_id'] . "','$galleryName')";
+      // echo "SQL:" . $sql . "<br>";
+      // echo "<hr>";
+      // //Inserts user input--the gallery-- in db
+      // $result = $this->db->insert_gallery($sql);
+      // return $result;
+    }
+
+    
   }
 
   function add_gallery()
@@ -178,10 +245,10 @@ class UserModel
     $galleryName = trim(filter_input(INPUT_POST, "galleryName", FILTER_SANITIZE_STRING));
 
     // displays information
-    echo "Gallery Name:" . $galleryName . "<br>";
+    //echo "Gallery Name:" . $galleryName . "<br>";
     session_start();
     if ($_GET["id"]) {
-      $sql = "SELECT * FROM final_gallery WHERE fk_user_id = '" . $_SESSION['pk_user_id'] . "' AND pk_gallery_id = '" . $_GET["id"] . "'"; 
+      $sql = "SELECT * FROM final_gallery WHERE fk_user_id = '" . $_SESSION['pk_user_id'] . "' AND pk_gallery_id = '" . $_GET["id"] . "'";
       echo "SQL:" . $sql . "<br>";
       echo "<hr>";
       $result = $this->conn->query($sql);
@@ -191,11 +258,11 @@ class UserModel
       while ($row = $result->fetch_assoc()) {
         $galleryInfo[] = $row;
 
-       //echo "Gallery Name: " . $row["gallery_name"] . " - Usr ID: " . $row["fk_user_id"] . "<br>" 
-        }
-        //print_r($galleryInfo);
-        return $galleryInfo;
-      
+        //echo "Gallery Name: " . $row["gallery_name"] . " - Usr ID: " . $row["fk_user_id"] . "<br>" 
+      }
+      //print_r($galleryInfo);
+      return $galleryInfo;
+
       //print_r($row);
     } else {
       $sql = "INSERT INTO " . $this->db->getGalleryTable() . " (fk_user_id, gallery_name) VALUES ('" . $_SESSION['pk_user_id'] . "','$galleryName')";
@@ -209,7 +276,7 @@ class UserModel
 
     //echo "result: " . $result;
 
-    
+
   }
 
   //Adds an image to a gallery
@@ -278,11 +345,10 @@ class UserModel
 
     //to db
     $galleryName = $this->db->get_gallery_name($sql);
-   // echo "Gallery Name: " . $galleryName;
+    // echo "Gallery Name: " . $galleryName;
 
     return $galleryName;
   }
-
 
   function get_profile_img()
   {
