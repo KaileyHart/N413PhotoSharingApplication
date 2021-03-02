@@ -35,9 +35,10 @@ class UserController
   //Shows home page
   function index()
   {
-    $allGalleries = $this->user_model->get_all_galleries();
+    $usernames = $this->user_model->get_all_usernames();
+    $results = $this->user_model->get_all_galleries();
     $main_view = new Index();
-    $main_view->show($allGalleries);
+    $main_view->show($results, $usernames);
   }
 
   //Calls register method from user model & shows Registration form
@@ -88,9 +89,10 @@ class UserController
   }
   //Add gallery 
   function single_gallery_view() {
+    $galleryName = $this->user_model->single_gallery_view();
     $this->user_model->single_gallery_view();
     $main_view = new SingleGallery;
-    $main_view->show();
+    $main_view->show($galleryName);
   }
 
   //Add image to a gallery 

@@ -41,6 +41,7 @@ class MainView
       
       <link rel="stylesheet" href="dist/css/profile.css" type="text/css"/>
       <link rel="stylesheet" href="dist/css/single_gallery.css" type="text/css"/>
+      <link rel="stylesheet" href="dist/css/index.css" type="text/css"/>
 
 
 

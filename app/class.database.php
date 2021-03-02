@@ -100,6 +100,18 @@ class Database
     return $row;
   }
 
+  function get_all_usernames($sql)
+  {
+    $result = $this->conn->query($sql);
+    $row = $result->fetch_assoc();
+
+    if (!mysqli_query($this->conn, $sql)) {
+      return "Error: " . $sql . "<br>" . mysqli_error($this->conn);
+    }
+
+    return $row;
+  }
+
   function get_gallery_name($sql)
   {
     $result = $this->conn->query($sql);

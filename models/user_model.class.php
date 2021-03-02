@@ -180,16 +180,36 @@ class UserModel
     // displays information
     echo "Gallery Name:" . $galleryName . "<br>";
     session_start();
-    $sql = "INSERT INTO " . $this->db->getGalleryTable() . " (fk_user_id, gallery_name) VALUES ('" . $_SESSION['pk_user_id'] . "','$galleryName')";
-    echo "SQL:" . $sql . "<br>";
-    echo "<hr>";
+    if ($_GET["id"]) {
+      $sql = "SELECT * FROM final_gallery WHERE fk_user_id = '" . $_SESSION['pk_user_id'] . "' AND pk_gallery_id = '" . $_GET["id"] . "'"; 
+      echo "SQL:" . $sql . "<br>";
+      echo "<hr>";
+      $result = $this->conn->query($sql);
 
-    //Inserts user input--the gallery-- in db
-    $result = $this->db->insert_gallery($sql);
+      $galleryInfo = array();
 
-    echo "result: " . $result;
+      while ($row = $result->fetch_assoc()) {
+        $galleryInfo[] = $row;
 
-    return $result;
+       //echo "Gallery Name: " . $row["gallery_name"] . " - Usr ID: " . $row["fk_user_id"] . "<br>" 
+        }
+        //print_r($galleryInfo);
+        return $galleryInfo;
+      
+      //print_r($row);
+    } else {
+      $sql = "INSERT INTO " . $this->db->getGalleryTable() . " (fk_user_id, gallery_name) VALUES ('" . $_SESSION['pk_user_id'] . "','$galleryName')";
+      echo "SQL:" . $sql . "<br>";
+      echo "<hr>";
+      //Inserts user input--the gallery-- in db
+      $result = $this->db->insert_gallery($sql);
+      return $result;
+    }
+    //print_r($result);
+
+    //echo "result: " . $result;
+
+    
   }
 
   //Adds an image to a gallery
@@ -198,23 +218,44 @@ class UserModel
     //May not need
   }
 
+  function get_all_usernames()
+  {
+    // session_start();
+    // $user_id = $_SESSION["pk_user_id"];
+    // $sql = "SELECT * FROM final_users 
+    // JOIN final_gallery
+    // ON final_users.pk_user_id=final_gallery.fk_user_id";
+    $sql = "SELECT * FROM final_users";
+
+    //to db
+    //$usernames = $this->db->get_all_usernames($sql);
+    $usernames = $this->conn->query($sql);
+
+    //  echo "Result: " . $usernames . "<br>";
+    //   echo "SQL: " . $sql;
+
+    return $usernames;
+  }
+
   //Returns the username
   function get_last_username()
   {
+    //session_start();
     $user_id = $_SESSION["pk_user_id"];
     $sql = "SELECT * FROM final_users WHERE pk_user_id = $user_id";
 
-   //to db
+    //to db
     $username = $this->db->get_last_username($sql);
 
     return $username;
   }
 
-  function get_gallery_id() {
-
+  function get_gallery_id()
+  {
   }
 
-  function get_gallery_name() {
+  function get_gallery_name()
+  {
     session_start();
 
     $user_id = $_SESSION["pk_user_id"];
@@ -224,20 +265,20 @@ class UserModel
 
     if ($results === 0) {
       echo "No galleries were found. Please add one.";
-  } else {
+    } else {
 
       foreach ($results as $result) {
-          $galleryId = $result['pk_gallery_id'];
-
+        $galleryId = $result['pk_gallery_id'];
       }
     }
 
     //Need to somehow grab the gallery id
-    
+
     $sql = "SELECT * FROM final_gallery WHERE pk_gallery_id = $galleryId";
 
     //to db
     $galleryName = $this->db->get_gallery_name($sql);
+   // echo "Gallery Name: " . $galleryName;
 
     return $galleryName;
   }
@@ -281,18 +322,20 @@ class UserModel
 
   function get_all_galleries()
   {
+    session_start();
 
     $sql = "SELECT * FROM final_gallery";
 
-    $result = $this->conn->query($sql);
+    $results = $this->conn->query($sql);
+    return $results;
 
-    if ($result->num_rows > 0) {
-      // output data of each row
-      while ($row = $result->fetch_assoc()) {
-        echo "Gallery Name: " . $row["gallery_name"] . " - Usr ID: " . $row["fk_user_id"] . "<br>";
-      }
-    } else {
-      echo "0 results";
-    }
+    //   if ($result->num_rows > 0) {
+    //     // output data of each row
+    //     while ($row = $result->fetch_assoc()) {
+    //       echo "Gallery Name: " . $row["gallery_name"] . " - Usr ID: " . $row["fk_user_id"] . "<br>";
+    //     }
+    //   } else {
+    //     echo "0 results";
+    //   }
   }
 }

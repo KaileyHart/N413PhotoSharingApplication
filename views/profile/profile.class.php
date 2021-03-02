@@ -49,7 +49,7 @@ class Profile extends MainView
                         foreach ($results as $result) {
                             $galleryId = $result['pk_gallery_id'];
                             echo "
-                        <div><a href='index.php?action=single_gallery_view?id=$galleryId'>
+                        <div><a href='index.php?action=single_gallery_view&id=$galleryId'>
                          <div class='gallery' data-id='" . $result['pk_gallery_id'] . "' data-item='" . $result['gallery_name'] . "'>
                         <div><b>" . $result['gallery_name'] . "</b> " . $result['fk_user_id'] . "</b> " . $result['pk_gallery_id'] . "</div> </div> </a></div>";
                         }

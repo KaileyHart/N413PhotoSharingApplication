@@ -8,8 +8,9 @@
 
 class SingleGallery  extends MainView
 {
-    function show()
+    function show($galleryName)
     {
+        print_r($galleryName[0]);
         parent::header();
 
 
@@ -26,15 +27,15 @@ class SingleGallery  extends MainView
                 <div class="right__container">
                     
                         <button>Back</button>
-                        <h2>Your Gallery Name Here</h2>
+                        <h2><?= $galleryName[0]["gallery_name"]; ?></h2>
                     
                 </div>
 
                 <div class="left__container">
                     <div class="left__buttons">
 
-                        <button><a href="index.php?action=add_image"> + Add Image</a> </button>
-                        <button><a href="index.php?action=edit_gallery">Edit Gallery</a> </button>
+                        <button><a href="index.php?action=add_image&gallery_id=<?= $galleryName[0]["pk_gallery_id"]; ?>"> + Add Image</a> </button>
+                        <button><a href="index.php?action=edit_gallery&gallery_id=<?= $galleryName[0]["pk_gallery_id"]; ?>"">Edit Gallery</a> </button>
                     </div>
 
                 </div>
