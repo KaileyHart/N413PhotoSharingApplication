@@ -137,10 +137,12 @@ class UserModel
       $galleryId = "";
       $image = "";
       $imageAlt = "";
+      $tag = " ";
 
       $galleryId = $_GET["id"];
       $image = filter_input(INPUT_POST, "image", FILTER_SANITIZE_STRING);
       $imageAlt = filter_input(INPUT_POST, "imagealt", FILTER_SANITIZE_STRING);
+      $tag = filter_input(INPUT_POST, "tag", FILTER_SANITIZE_STRING);
 
       echo "galleryID: " . $galleryId . "<br>";
       echo "image: " . $image . "<br>";
@@ -150,7 +152,9 @@ class UserModel
       $tempname = $_FILES["galleryImage"]["tmp_name"];
       $folder = "dist/galleryImages/" . $image;
 
-      $sql = "INSERT INTO final_images (fk_gallery_id, img_path, img_alt ) VALUES ('$galleryId', '$image', '$imageAlt')";
+      $sql = 
+      "INSERT INTO final_images (fk_gallery_id, img_path, img_alt ) VALUES ('$galleryId', '$image', '$imageAlt');
+      INSERT INTO final_tags (tag_name, fk_image_id) VALUES ('$tag', '$imageId');";
 
       
       echo "sql: " . $sql . "<br>";

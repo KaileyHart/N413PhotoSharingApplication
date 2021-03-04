@@ -16,7 +16,7 @@ class AddImageConfirm extends MainView
             echo '<h3>You are not logged in. Check your credentials and try again.</h3>
             <a href="index.php?action=register"><button class="btn btn-dark mt-5">Try Again</button></a>';
         }
-        
+
         print_r($result);
         // print_r($_SESSION["pk_user_id"]);
         // parent::header();
@@ -30,7 +30,11 @@ class AddImageConfirm extends MainView
 
 
            
-        <div class="top-row"> This is the add image confirmation page</div>
+        <div class="top-row"> 
+        <h2>You successfully uploaded an image!</h2>
+        
+        
+        </div>
       
                
        
