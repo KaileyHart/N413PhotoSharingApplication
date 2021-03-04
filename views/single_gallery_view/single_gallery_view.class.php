@@ -10,7 +10,7 @@ class SingleGallery  extends MainView
 {
     function show($galleryName)
     {
-        print_r($galleryName[0]);
+       //print_r($galleryName);
         parent::header();
 
 

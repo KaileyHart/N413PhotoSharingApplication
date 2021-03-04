@@ -15,10 +15,12 @@
 require_once('views/login_confirm/login_confirm.class.php');
 require_once('views/register_confirm/register_confirm.class.php');
 require_once('views/logout_confirm/logout_confirm.class.php');
+require_once('views/add_image_confirm/add_image_confirm.class.php');
 require_once('views/add_image/add_image.class.php');
 require_once('views/add_gallery/add_gallery.class.php');
 require_once('views/profile/profile.class.php');
 require_once('views/single_gallery_view/single_gallery_view.class.php');
+
 
 class UserController
 {
@@ -94,9 +96,18 @@ class UserController
   //Add image to a gallery 
   function add_image() {
     $galleryName = $this->user_model->single_gallery_view();
-    $this->user_model->add_image();
+    //$this->user_model->add_image();
     $main_view = new AddImage;
     $main_view->show($galleryName);
+  }
+
+
+   //Add image to a gallery 
+   function add_image_confirm() {
+    $result = $this->user_model->add_image_confirm();
+    // $this->user_model->add_image_confirm();
+    $main_view = new AddImageConfirm;
+    $main_view->show($result);
   }
 
   //Shows user profile

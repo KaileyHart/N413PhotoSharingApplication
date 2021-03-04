@@ -59,6 +59,9 @@ switch ($action) {
   case "add_image":
     $user_controller->add_image();
     break;
+  case "add_image_confirm":
+    $user_controller->add_image_confirm();
+    break;
   case "reset":
     $user_controller->reset();
     break;

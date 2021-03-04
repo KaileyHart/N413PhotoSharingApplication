@@ -13,12 +13,12 @@ class AddImage extends MainView {
         parent::header();
     ?>
     <h2>Add Image to <?=$galleryName[0]['gallery_name']?></h2>
-    <form method="POST" action="index.php?action=profile">
+    <form method="POST" action="index.php?action=add_image_confirm&id=<?= $galleryName[0]["pk_gallery_id"]; ?>" enctype="multipart/form-data" >
     <div class="row mt-5">
         <div class="col-4"></div>
         <div id="form-container" class="col-4">
-            Upload image: <input type="file" id="imageUpload" name="imageUpload" class="form-control" value="" placeholder="Upload an Image" required /><br />
-            Image Description : <input type="text" id="imageDescription" name="imageDescription" class="form-control" value="" placeholder="Image Description" required /><br />
+            Upload image: <input type="file" id="galleryImage" name="galleryImage" class="form-control" value="" placeholder="Upload an Image" required /><br />
+            Image Description : <input type="text" id="imagealt" name="imagealt" class="form-control" value="" placeholder="Image Description" required /><br />
             <label for="tag">Image Tag</label>
             <br>
             <select name="tag" id="tag">
@@ -39,7 +39,7 @@ class AddImage extends MainView {
                 <option value="interiors">interiors</option>
             </select>
             <br>
-            <button type="submit" id="submit" class="btn btn-dark float-right">Submit</button>
+            <button type="submit" id="submit" name="submit" class="btn btn-dark float-right">Submit</button>
         </div>
     </div>
 </form>
