@@ -209,6 +209,38 @@ class UserModel
   {
      
   }
+  
+
+
+// SELECT *
+// FROM final_images i, final_tags t, final_img_tags it
+// WHERE i.pk_img_id = it.fk_img_id
+// AND t.pk_tag_id = it.fk_tag_id
+// AND t.pk_tag_id = 4;
+
+  function display_single_gallery_images() {
+    session_start();
+
+    $gallery_id = $_GET["id"];
+    // $sql = "SELECT * FROM final_images WHERE fk_gallery_id = $gallery_id";
+    $sql = "SELECT *
+    FROM final_images i, final_tags t, final_img_tags it
+    WHERE i.pk_img_id = it.fk_img_id
+    AND t.pk_tag_id = it.fk_tag_id
+    AND i.fk_gallery_id = $gallery_id";
+
+    print_r($sql);
+
+    $results = $this->conn->query($sql);
+
+      $images = array();
+
+      while ($row = $results->fetch_assoc()) {
+        $images[] = $row;
+      }
+      return $images;
+      print_r($images);
+  }
 
   //Adds gallery
   function single_gallery_view()
@@ -344,7 +376,7 @@ class UserModel
 
 // foreach($imageArray as $image) {
 
-  
+
 //   echo "<a href='tag.php?id=" . $image['tag_id'] ."'>Tag</a>";
 // }
 

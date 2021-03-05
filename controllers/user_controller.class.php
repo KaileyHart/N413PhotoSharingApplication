@@ -87,10 +87,10 @@ class UserController
   }
   //Add gallery 
   function single_gallery_view() {
+    $images = $this->user_model->display_single_gallery_images();
     $galleryName = $this->user_model->single_gallery_view();
-    $this->user_model->single_gallery_view();
     $main_view = new SingleGallery;
-    $main_view->show($galleryName);
+    $main_view->show($galleryName, $images);
   }
 
   //Add image to a gallery 

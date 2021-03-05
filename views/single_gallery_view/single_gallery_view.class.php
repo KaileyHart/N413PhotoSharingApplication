@@ -8,7 +8,7 @@
 
 class SingleGallery  extends MainView
 {
-    function show($galleryName)
+    function show($galleryName, $images)
     {
        //print_r($galleryName);
         parent::header();
@@ -46,7 +46,19 @@ class SingleGallery  extends MainView
             <div class="middle">
                 <h2>Gallery Images</h2>
                 <div class="gallery">
+                    <?php
+                    if ($images === 0) {
+                        echo "No images were found. Please add one.";
+                    } else {
 
+                        foreach ($images as $image) {
+                            echo "<img class='middle_gallery_img' alt='" . $image["img_alt"] ."' src='" . $image["img_path"] ."' / >"; 
+                        }
+
+                      
+                    }
+                    
+                    ?>
                 </div>
             </div>
 
