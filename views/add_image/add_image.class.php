@@ -22,21 +22,21 @@ class AddImage extends MainView {
             <label for="tag">Image Tag</label>
             <br>
             <select name="tag" id="tag">
-                <option value="family">family</option>
-                <option value="friends">friends</option>
-                <option value="fashion">fashion</option>
-                <option value="nature">nature</option>
-                <option value="architecture">architecture</option>
-                <option value="animal">animal</option>
-                <option value="food">food</option>
-                <option value="technology">technology</option>
-                <option value="travel">travel</option>
-                <option value="art">art</option>
-                <option value="drinks">drinks</option>
-                <option value="patterns">patterns</option>
-                <option value="spirituality">spirituality</option>
-                <option value="business">business</option>
-                <option value="interiors">interiors</option>
+                <option value="1" >family</option>
+                <option value="2" >friends</option>
+                <option value="3">fashion</option>
+                <option value="4" >nature</option>
+                <option value="5" >architecture</option>
+                <option value="6" >animal</option>
+                <option value="7" >food</option>
+                <option value="8" >technology</option>
+                <option value="9" >travel</option>
+                <option value="10">art</option>
+                <option value="11" >drinks</option>
+                <option value="12" >patterns</option>
+                <option value="13">spirituality</option>
+                <option value="14" >business</option>
+                <option value="15" >interiors</option>
             </select>
             <br>
             <button type="submit" id="submit" name="submit" class="btn btn-dark float-right">Submit</button>

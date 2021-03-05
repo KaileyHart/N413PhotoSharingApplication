@@ -29,7 +29,8 @@ class UserModel
   {
   }
 
-  function register() {
+  function register()
+  {
   }
 
   //Registers user and shows confirmation page
@@ -113,7 +114,6 @@ class UserModel
 
       session_start();
       $_SESSION["pk_user_id"] = $row["pk_user_id"];
-
     }
   }
 
@@ -124,40 +124,38 @@ class UserModel
     session_destroy();
   }
 
-  function profile() {}
+  function profile()
+  {
+  }
 
-  function add_gallery() {}
+  function add_gallery()
+  {
+  }
 
   function add_image_confirm()
   {
     session_start();
 
-    if(isset($_POST['submit'])) {
+    if (isset($_POST['submit'])) {
 
       $galleryId = "";
       $image = "";
       $imageAlt = "";
-      $tag = " ";
+      $tag = $_POST["tag"];
 
       $galleryId = $_GET["id"];
       $image = filter_input(INPUT_POST, "image", FILTER_SANITIZE_STRING);
       $imageAlt = filter_input(INPUT_POST, "imagealt", FILTER_SANITIZE_STRING);
-      $tag = filter_input(INPUT_POST, "tag", FILTER_SANITIZE_STRING);
 
-      echo "galleryID: " . $galleryId . "<br>";
-      echo "image: " . $image . "<br>";
-      echo "image alt: " . $imageAlt . "<br>";
+
 
       $image = $_FILES["galleryImage"]["name"];
       $tempname = $_FILES["galleryImage"]["tmp_name"];
       $folder = "dist/galleryImages/" . $image;
 
-      $sql = 
-      "INSERT INTO final_images (fk_gallery_id, img_path, img_alt ) VALUES ('$galleryId', '$image', '$imageAlt');
-      INSERT INTO final_tags (tag_name, fk_image_id) VALUES ('$tag', '$imageId');";
-
-      
-      echo "sql: " . $sql . "<br>";
+      echo "galleryID: " . $galleryId . "<br>";
+      echo "image: " . $image . "<br>";
+      echo "image alt: " . $imageAlt . "<br>";
 
       if (move_uploaded_file($tempname, $folder)) {
         echo "Image uploaded.";
@@ -165,115 +163,51 @@ class UserModel
         echo "Failed.";
       }
 
-      $result = $this->db->insert_img($sql);
+      $sql =
+        "INSERT INTO final_images (fk_gallery_id, img_path, img_alt ) VALUES ('$galleryId', '$folder', '$imageAlt')";
+      // INSERT INTO final_tags (tag_name, fk_image_id) VALUES ('$tag', '$imageId');";
+     
+      
+        $result = $this->db->insert_img($sql);
 
-      echo "Result: " . $result . "<br>";
-      return $result;
-      print_r($result);
+      $sql = "SELECT pk_img_id FROM final_images ORDER BY pk_img_id DESC LIMIT 1";
 
-      $image_id = mysqli_insert_id($this->conn);
+        $IDresult = $this->conn->query($sql);
+
+         //echo "Result: " . $result . "<br>";
+        // return $IDresult;
+        //return $result;
+        print_r($IDresult);
+       // print_r($IDresult[0]["pk_img_id"]);
+        //echo "RESULT ID: " . $IDresult[0];
+        $imageInfo = array();
+        while ($row = $IDresult->fetch_assoc()) {
+          $imageInfo[] = $row;
+        }
+
+        print_r($imageInfo);
+       $imageID = $imageInfo[0]["pk_img_id"];
+
+       $sql =
+        "INSERT INTO final_img_tags (fk_img_id, fk_tag_id) VALUES ('$imageID', '$tag')";
+
+        $result = $this->db->insert_tag($sql);
+
+        print_r($result);
+
+        //return $galleryInfo;
+
+      //Grab last uploaded image id w select 
+      //Insert img id into tags 
+
+      //$image_id = mysqli_insert_id($this->conn);
     }
   }
 
 
   function add_image()
   {
-   // session_start();
-
-    // if(isset($_POST["submit"])) {
-    //   $galleryId = "";
-    //   $image = "";
-    //   $imageAlt = "";
-
-    //   $galleryId = $_GET["id"];
-    //   $image = filter_input(INPUT_POST, "image", FILTER_SANITIZE_STRING);
-    //   $imageAlt = filter_input(INPUT_POST, "imagealt", FILTER_SANITIZE_STRING);
-
-    //   $image = $_FILES["image"]["name"];
-    //   $tempname = $_FILES["image"]["tmp_name"];
-    //   $folder = "dist/galleryImages/" . $image;
-
-    //   $sql = "INSERT INTO " . $this->db->getImgTable() . "(fk_gallery_id, img_path, img_alt ) VALUES ('$galleryId', '$image', '$imageAlt')";
-
-    //   echo "galleryID: " . $galleryId . "<br>";
-    //   echo "image: " . $image . "<br>";
-    //   echo "image alt: " . $imageAlt . "<br>";
-    //   echo "sql: " . $sql . "<br>";
-
-    //   if (move_uploaded_file($tempname, $folder)) {
-    //     echo "Image uploaded.";
-    //   } else {
-    //     echo "Failed.";
-    //   }
-
-    //   $result = $this->db->insert_img($sql);
-
-    //   echo "Result: " . $result . "<br>";
-
-    //   $image_id = mysqli_insert_id($this->conn);
-    // }
-      
-    
-    
-    // if($_GET["id"]) {
-    //  echo "<br> id:" . $_GET["id"] . "<br>";
-    //  echo "<br> " . $this->db->getImgTable();
-         
-    //   echo "sql: " . $sql;
-
-    //}
-    //Grabbing id
-    // if ($_GET["id"]) {
-    //   $sql = "SELECT * FROM final_gallery WHERE fk_user_id = '" . $_SESSION['pk_user_id'] . "' AND pk_gallery_id = '" . $_GET["id"] . "'";
-    //   echo "SQL:" . $sql . "<br>";
-    //   echo "<hr>";
-    //   $result = $this->conn->query($sql);
-
-    //   $galleryInfo = array();
-
-    //   while ($row = $result->fetch_assoc()) {
-    //     $galleryInfo[] = $row;
-
-    //     //echo "Gallery Name: " . $row["gallery_name"] . " - Usr ID: " . $row["fk_user_id"] . "<br>" 
-    //   }
-    //   //print_r($galleryInfo);
-    //   return $galleryInfo;
-
-    // Adding Image and image info 
-    // Image tag?
-    //   if (isset($_POST['submit'])) {
-
-    //     $description = '';
-    //     $tag = '';
-
-    //     $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING);
-    //     $tag = filter_input(INPUT_POST, "tag", FILTER_SANITIZE_STRING);
-  
-    //     $image = $_FILES['image']['name'];
-    //     $tempname = $_FILES["image"]["tmp_name"];
-    //     $folder = "dist/images/" . $image;
-  
-    //     echo $image;
-    //     echo $description;
-      
-
-    //     $sql = "INSERT INTO " . $this->db->getImgTbl() . " ('img_path', 'img_alt') VALUES ( '$image', '$description' )";
-    //     echo "SQL:" . $sql . "<br>";
-    //     echo "<hr>";
-
-    //     if (move_uploaded_file($tempname, $folder)) {
-    //       echo "Image uploaded successfully";
-    //     } else {
-    //       echo "Failed to upload image";
-    //     }
-    //     //Inserts user input in db
-    //     $result = $this->db->insert_img($sql);
-    //     echo "result: " . $result;
-    //     return $result;
-    //   }
-    //  else {
-    //   echo "error";
-    // }
+     
   }
 
   //Adds gallery
@@ -296,7 +230,6 @@ class UserModel
         $galleryInfo[] = $row;
       }
       return $galleryInfo;
-
     } else {
       $sql = "INSERT INTO " . $this->db->getGalleryTable() . " (fk_user_id, gallery_name) VALUES ('" . $_SESSION['pk_user_id'] . "','$galleryName')";
       echo "SQL:" . $sql . "<br>";
@@ -376,7 +309,6 @@ class UserModel
     $results = $this->conn->query($gallerySql);
 
     return $results;
-
   }
 
   function get_all_galleries()
@@ -388,4 +320,33 @@ class UserModel
     $results = $this->conn->query($sql);
     return $results;
   }
+
+  
+// SELECT *
+// FROM images i, tags t, imagetags it
+// WHERE i.image_id = it.fk_img_id
+// AND t.tag_id = it.fk_tag_id
+// AND t.tag_id = 4
+
+
+// SELCT *
+// FROM images i, tags t
+// JOIN images ON i.image_id = t.tag_id
+// WHERE t.tag_id = 4
+
+// $imageArray = array();
+
+// while($row = mysqli_assoc()) { $imageArray[] = $image; }
+
+// return $imageArray;
+
+// echo "Image: " . $imageArray[0]['image_path'];
+
+// foreach($imageArray as $image) {
+
+  
+//   echo "<a href='tag.php?id=" . $image['tag_id'] ."'>Tag</a>";
+// }
+
+
 }

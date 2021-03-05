@@ -9,7 +9,7 @@
 class AddImageConfirm extends MainView
 {
     function show($result)
-    { 
+    {
         parent::header();
 
         if (!isset($_SESSION["pk_user_id"])) {
@@ -18,27 +18,19 @@ class AddImageConfirm extends MainView
         }
 
         print_r($result);
-        // print_r($_SESSION["pk_user_id"]);
-        // parent::header();
-        // if(isset($_SESSION["pk_user_id"])){
-        //     echo '<h3>Congrats! You Logged In.</h3>';
-        // }else{
-        //     echo '<h3>Uh oh...The Log-In was not successful. Check your credentials and try again.</h3>
-        //           <a href="index.php?action=login"><button class="btn btn-dark mt-5">Try Again</button></a>';
-        // }
 ?>
 
 
-           
-        <div class="top-row"> 
-        <h2>You successfully uploaded an image!</h2>
-        
-        
+
+        <div class="top-row">
+            <h2>You successfully uploaded an image!</h2>
+
+
         </div>
-      
-               
-       
-         
+
+
+
+
 <?php
         parent::footer();
     }

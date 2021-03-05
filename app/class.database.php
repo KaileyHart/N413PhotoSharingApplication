@@ -105,6 +105,15 @@ class Database
     }
   }
 
+  function insert_tag($sql)
+  {
+
+    if (!mysqli_query($this->conn, $sql)) {
+      return "Error: " . $sql . "<br>" . mysqli_error($this->conn);
+    } 
+    return true;
+  }
+
   function get_last_username($sql)
   {
     $result = $this->conn->query($sql);
