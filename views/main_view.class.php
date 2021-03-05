@@ -109,11 +109,18 @@ class MainView
               <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-fw fa-user-circle"></i><span class="sr-only">
               </button>
+
+
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li><a class="dropdown-item" href="index.php?action=login">Login</a></li>
-                <li><a class="dropdown-item" href="index.php?action=register">Register</a></li>
-                <li><a class="dropdown-item" href="index.php?action=logout_confirm">Logout</a></li>
-                <li><a class="dropdown-item" href="index.php?action=profile">Profile</a></li>
+              <?php 
+                if(isset($_SESSION["pk_user_id"])) {
+                  echo "<li><a class='dropdown-item' href='index.php?action=logout_confirm'>Logout</a></li>
+                  <li><a class='dropdown-item' href='index.php?action=profile'>Profile</a></li>";
+                } else {
+                  echo "<li><a class='dropdown-item' href='index.php?action=login'>Login</a></li>
+                  <li><a class='dropdown-item' href='index.php?action=register'>Register</a></li>";
+                }
+              ?> 
               </ul>
             </li>
           </ul>
