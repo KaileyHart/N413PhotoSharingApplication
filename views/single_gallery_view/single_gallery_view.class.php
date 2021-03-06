@@ -26,7 +26,7 @@ class SingleGallery  extends MainView
             <div class="left">
                 <div class="right__container">
                     
-                        <button>Back</button>
+                        <button><a href="index.php?action=profile"> Back</a></button>
                         <h2><?= $galleryName[0]["gallery_name"]; ?></h2>
                     
                 </div>
@@ -52,7 +52,11 @@ class SingleGallery  extends MainView
                     } else {
 
                         foreach ($images as $image) {
-                            echo "<img class='middle_gallery_img' alt='" . $image["img_alt"] ."' src='" . $image["img_path"] ."' / >"; 
+                            echo "<div class='gallery_images--top'>
+                            <div class='gallery_images'>
+                            <div class='gallery_images--info'>
+                            <p>" . $image['img_alt'] . "</p> <p class='gallery_images--tag'> " . $image['tag_name'] . " </p></div>
+                            <img class='middle_gallery_img' alt='" . $image["img_alt"] ."' src='" . $image["img_path"] ."' / ></div></div>"; 
                         }
 
                       
