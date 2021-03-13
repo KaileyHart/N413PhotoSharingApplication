@@ -13,7 +13,7 @@ class AddGallery extends MainView
     parent::header();
 ?>
 <h2> Add Gallery</h2>
-      <form method="POST" action="index.php?action=single_gallery_view">
+      <form method="POST" action="index.php?action=add_gallery_confirm">
     <div class="row mt-5">
         <div class="col-4"></div>
         <div id="form-container" class="col-4">

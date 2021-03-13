@@ -18,6 +18,7 @@ require_once('views/logout_confirm/logout_confirm.class.php');
 require_once('views/add_image_confirm/add_image_confirm.class.php');
 require_once('views/add_image/add_image.class.php');
 require_once('views/add_gallery/add_gallery.class.php');
+require_once('views/add_gallery_confirm/add_gallery_confirm.class.php');
 require_once('views/profile/profile.class.php');
 require_once('views/single_gallery_view/single_gallery_view.class.php');
 
@@ -46,15 +47,15 @@ class UserController
 
   //Calls register method from user model & shows Registration form
   function register()
-  {
-    $result = $this->user_model->register();
+  {$result = $this->user_model->register_confirm();
+    //$result = $this->user_model->register();
     $main_view = new Register();
     $main_view->show($result);
   }
 
   function register_confirm()
   {
-    //$result = $this->user_model->register_confirm();
+    $result = $this->user_model->register_confirm();
     $main_view = new RegisterConfirm();
     $main_view->show();
   }
@@ -86,10 +87,17 @@ class UserController
     $main_view = new AddGallery;
     $main_view->show();
   }
+
+  function add_gallery_confirm() {
+    $result = $this->user_model->single_gallery_view();
+    $main_view = new AddGalleryConfirm;
+    $main_view->show($result);
+
+  }
   //Add gallery 
   function single_gallery_view() {
-    $images = $this->user_model->display_single_gallery_images();
     $galleryName = $this->user_model->single_gallery_view();
+    $images = $this->user_model->display_single_gallery_images();
     $main_view = new SingleGallery;
     $main_view->show($galleryName, $images);
   }

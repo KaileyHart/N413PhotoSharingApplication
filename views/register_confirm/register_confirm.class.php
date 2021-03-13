@@ -8,8 +8,10 @@
 
 class RegisterConfirm extends MainView
 {
+  
   function show()
   {
+    
    
     parent::header();
 

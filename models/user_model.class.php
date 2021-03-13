@@ -75,6 +75,7 @@ class UserModel
 
       $user_id = mysqli_insert_id($this->conn);
       if ($user_id) {
+      session_start();
         $_SESSION["pk_user_id"] = $user_id;
       }
 
@@ -174,12 +175,8 @@ class UserModel
 
         $IDresult = $this->conn->query($sql);
 
-         //echo "Result: " . $result . "<br>";
-        // return $IDresult;
-        //return $result;
         print_r($IDresult);
-       // print_r($IDresult[0]["pk_img_id"]);
-        //echo "RESULT ID: " . $IDresult[0];
+
         $imageInfo = array();
         while ($row = $IDresult->fetch_assoc()) {
           $imageInfo[] = $row;
@@ -194,29 +191,13 @@ class UserModel
         $result = $this->db->insert_tag($sql);
 
         print_r($result);
-
-        //return $galleryInfo;
-
-      //Grab last uploaded image id w select 
-      //Insert img id into tags 
-
-      //$image_id = mysqli_insert_id($this->conn);
     }
   }
 
 
   function add_image()
-  {
-     
+  {  
   }
-  
-
-
-// SELECT *
-// FROM final_images i, final_tags t, final_img_tags it
-// WHERE i.pk_img_id = it.fk_img_id
-// AND t.pk_tag_id = it.fk_tag_id
-// AND t.pk_tag_id = 4;
 
   function display_single_gallery_images() {
     session_start();
@@ -245,7 +226,6 @@ class UserModel
   //Adds gallery
   function single_gallery_view()
   {
-
     $galleryName = '';
     $galleryName = trim(filter_input(INPUT_POST, "galleryName", FILTER_SANITIZE_STRING));
 
@@ -271,21 +251,16 @@ class UserModel
     }
   }
 
+  //Get all of the usernames of all of the users
   function get_all_usernames()
   {
-    //Add all usernames to each gallery on home page
-    // session_start();
-    // $user_id = $_SESSION["pk_user_id"];
-    // $sql = "SELECT * FROM final_users 
-    // JOIN final_gallery
-    // ON final_users.pk_user_id=final_gallery.fk_user_id";
     $sql = "SELECT * FROM final_users";
 
     $usernames = $this->conn->query($sql);
     return $usernames;
   }
 
-  //Returns the username
+  //Returns the username of a user
   function get_last_username()
   {
     $user_id = $_SESSION["pk_user_id"];
@@ -296,8 +271,8 @@ class UserModel
     return $username;
   }
   
- // FROM final_images i, final_tags t, final_img_tags it
 
+ //Gets the gallery name for a single user
   function get_gallery_name()
   {
     session_start();
@@ -325,6 +300,7 @@ class UserModel
     
   }
 
+  //Gets the profile image of a user
   function get_profile_img()
   {
     $user_id = $_SESSION["pk_user_id"];
@@ -335,6 +311,7 @@ class UserModel
     return $image;
   }
 
+  //Gets all the galleries for one user
   function get_single_user_galleries()
   {
     session_start();
@@ -346,23 +323,9 @@ class UserModel
 
     return $results;
   }
-  // $sql = "SELECT *
-  // FROM final_images i, final_tags t, final_img_tags it
-  // WHERE i.pk_img_id = it.fk_img_id
-  // AND t.pk_tag_id = it.fk_tag_id
-  // AND i.fk_gallery_id = $gallery_id";
 
-  // print_r($sql);
 
-  // $results = $this->conn->query($sql);
-
-  //   $images = array();
-
-  //   while ($row = $results->fetch_assoc()) {
-  //     $images[] = $row;
-  //   }
-  //   return $images;
-  //   print_r($images);
+  //Gets all images, tags, galleries, and users to display on Index
   function get_all_galleries()
   {
     session_start();
@@ -376,38 +339,7 @@ class UserModel
     AND g.pk_gallery_id = i.fk_gallery_id
     AND g.fk_user_id = u.pk_user_id";
 
-   
-
     $results = $this->conn->query($sql);
     return $results;
   }
-
-  
-// SELECT *
-// FROM images i, tags t, imagetags it
-// WHERE i.image_id = it.fk_img_id
-// AND t.tag_id = it.fk_tag_id
-// AND t.tag_id = 4
-
-
-// SELCT *
-// FROM images i, tags t
-// JOIN images ON i.image_id = t.tag_id
-// WHERE t.tag_id = 4
-
-// $imageArray = array();
-
-// while($row = mysqli_assoc()) { $imageArray[] = $image; }
-
-// return $imageArray;
-
-// echo "Image: " . $imageArray[0]['image_path'];
-
-// foreach($imageArray as $image) {
-
-
-//   echo "<a href='tag.php?id=" . $image['tag_id'] ."'>Tag</a>";
-// }
-
-
 }
