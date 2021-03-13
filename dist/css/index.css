@@ -2,3 +2,47 @@
     display: flex;
     justify-content: space-between;
 }
+
+.middle_index_img {
+    width: 600px;
+    
+}
+.index .index_images--top {
+    padding-top: 20px;
+}
+.index .index_images {
+    padding-top: 10px;
+    border: 1px solid #707070;
+    
+}
+
+.index .index_images .index_images--info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.index .index_images .index_images--info .index_images--tag {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0px 15px;
+}
+
+.index .index_images .index_images--info-tag {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.index .index_images .index_images--info-user {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.index .index_images .index_images--info-user .user_img {
+    height: 30px;
+    border-radius: 50%;
+}

@@ -295,6 +295,8 @@ class UserModel
 
     return $username;
   }
+  
+ // FROM final_images i, final_tags t, final_img_tags it
 
   function get_gallery_name()
   {
@@ -319,6 +321,8 @@ class UserModel
     $galleryName = $this->db->get_gallery_name($sql);
 
     return $galleryName;
+
+    
   }
 
   function get_profile_img()
@@ -342,12 +346,37 @@ class UserModel
 
     return $results;
   }
+  // $sql = "SELECT *
+  // FROM final_images i, final_tags t, final_img_tags it
+  // WHERE i.pk_img_id = it.fk_img_id
+  // AND t.pk_tag_id = it.fk_tag_id
+  // AND i.fk_gallery_id = $gallery_id";
 
+  // print_r($sql);
+
+  // $results = $this->conn->query($sql);
+
+  //   $images = array();
+
+  //   while ($row = $results->fetch_assoc()) {
+  //     $images[] = $row;
+  //   }
+  //   return $images;
+  //   print_r($images);
   function get_all_galleries()
   {
     session_start();
 
-    $sql = "SELECT * FROM final_gallery";
+    //Retrieves info from images, tags, img_tags, gallery, and users table
+    //Doesn't duplicate the information
+    $sql = "SELECT *
+    FROM final_images i, final_tags t, final_img_tags it, final_gallery g, final_users u
+    WHERE i.pk_img_id = it.fk_img_id
+    AND t.pk_tag_id = it.fk_tag_id
+    AND g.pk_gallery_id = i.fk_gallery_id
+    AND g.fk_user_id = u.pk_user_id";
+
+   
 
     $results = $this->conn->query($sql);
     return $results;
