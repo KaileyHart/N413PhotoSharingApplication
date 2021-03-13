@@ -24,8 +24,8 @@ class Profile extends MainView
             <div class="left">
                 <h2>Your Profile</h2>
                 <div class="left__container">
-                    <div class="left__image">
-                      <img class="left__image" alt="profile image" src="dist/images/<?=$image['user_img']?>"> 
+                    <div style="max-width: 225px; height: auto;" class="left_user_image--container">
+                      <img  class="left_user_image" alt="profile image" src="dist/images/<?=$image['user_img']?>"> 
                     </div>
                     <div class="left__buttons">
                         <p><?=$username['username']?></p>

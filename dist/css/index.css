@@ -42,7 +42,15 @@
     
 }
 
-.index .index_images .index_images--info-user .user_img {
+ .user_img {
     height: 30px;
+   
+ }
+
+.left_user_image_small--container {
+    height: 30px;
+    max-width: 30px; 
+    overflow: hidden;
     border-radius: 50%;
-}
+} 
+

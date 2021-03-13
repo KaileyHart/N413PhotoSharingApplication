@@ -7,10 +7,16 @@
     display: flex;
     justify-content: space-between;
 }
-.left .left__container .left__image {
-    height: 225px;
+
+.left_user_image--container {
+    height: 300px;
+    max-width: 300px; 
+    overflow: hidden;
     border-radius: 50%;
-    background-color: #000;
+} 
+
+.left_user_image {
+    width: 300px;
 }
 
 .left .left__container .left__buttons {
