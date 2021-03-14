@@ -53,9 +53,15 @@ switch ($action) {
   case "add_gallery":
     $user_controller->add_gallery();
     break;
-    case "add_gallery_confirm":
-      $user_controller->add_gallery_confirm();
-      break;
+  case "add_gallery_confirm":
+    $user_controller->add_gallery_confirm();
+    break;
+  case "edit_gallery":
+    $user_controller->edit_gallery();
+    break;
+  case "edit_gallery_confirm":
+    $user_controller->edit_gallery_confirm();
+    break;
   case "single_gallery_view":
     $user_controller->single_gallery_view();
     break;

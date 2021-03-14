@@ -21,6 +21,8 @@ require_once('views/add_gallery/add_gallery.class.php');
 require_once('views/add_gallery_confirm/add_gallery_confirm.class.php');
 require_once('views/profile/profile.class.php');
 require_once('views/single_gallery_view/single_gallery_view.class.php');
+require_once('views/edit_gallery/edit_gallery.class.php');
+require_once('views/edit_gallery_confirm/edit_gallery_confirm.php');
 
 
 class UserController
@@ -94,6 +96,21 @@ class UserController
     $main_view->show($result);
 
   }
+
+  function edit_gallery() {
+    //$this->user_model->edit_gallery();
+    $galleryName = $this->user_model->single_gallery_view();
+    $main_view = new EditGallery;
+    $main_view->show($galleryName);
+  }
+
+  function edit_gallery_confirm() {
+    $result = $this->user_model->edit_gallery_confirm();
+
+    $main_view = new EditGalleryConfirm;
+    $main_view->show($result);
+  }
+
   //Add gallery 
   function single_gallery_view() {
     $galleryName = $this->user_model->single_gallery_view();

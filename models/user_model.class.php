@@ -133,6 +133,8 @@ class UserModel
   {
   }
 
+  function edit_gallery() {}
+
   function add_image_confirm()
   {
     session_start();
@@ -200,15 +202,15 @@ class UserModel
   }
 
   function display_single_gallery_images() {
-    session_start();
+    //session_start();
 
-    $gallery_id = $_GET["id"];
+    $galleryId = (isset($_GET['id']) ? $_GET['id'] : '');
     // $sql = "SELECT * FROM final_images WHERE fk_gallery_id = $gallery_id";
     $sql = "SELECT *
     FROM final_images i, final_tags t, final_img_tags it
     WHERE i.pk_img_id = it.fk_img_id
     AND t.pk_tag_id = it.fk_tag_id
-    AND i.fk_gallery_id = $gallery_id";
+    AND i.fk_gallery_id = $galleryId";
 
     print_r($sql);
 
@@ -221,6 +223,22 @@ class UserModel
       }
       return $images;
       print_r($images);
+  }
+
+
+  function edit_gallery_confirm() {
+    $galleryName = '';
+    $galleryName = trim(filter_input(INPUT_POST, "galleryName", FILTER_SANITIZE_STRING));
+
+    session_start();
+    if ($_GET["id"]) {
+      $sql = "UPDATE " . $this->db->getGalleryTable() . " SET gallery_name = '$galleryName' WHERE pk_gallery_id= " . $_GET["id"] ."";
+      echo "SQL:" . $sql . "<br>";
+      echo "<hr>";
+      $result = $this->conn->query($sql);
+
+      return $result;
+    } 
   }
 
   //Adds gallery
