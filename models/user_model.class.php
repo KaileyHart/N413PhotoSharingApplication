@@ -133,7 +133,23 @@ class UserModel
   {
   }
 
+
+  function delete_gallery_confirm() {
+    session_start();
+    if(isset($_GET['id'])) {
+      $sql = "DELETE FROM " . $this->db->getGalleryTable() . " WHERE pk_gallery_id =" .$_GET['id'] ."";
+      echo "SQL:" . $sql . "<br>";
+      echo "<hr>";
+      $result = $this->conn->query($sql);
+      return $result;
+    }
+
+    
+  }
+
+
   function edit_gallery() {}
+  function edit_gallery_name() {}
 
   function add_image_confirm()
   {

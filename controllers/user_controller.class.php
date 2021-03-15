@@ -23,6 +23,8 @@ require_once('views/profile/profile.class.php');
 require_once('views/single_gallery_view/single_gallery_view.class.php');
 require_once('views/edit_gallery/edit_gallery.class.php');
 require_once('views/edit_gallery_confirm/edit_gallery_confirm.php');
+require_once('views/edit_gallery_name/edit_gallery_name.class.php');
+require_once('views/delete_gallery_confirm/delete_gallery_confirm.class.php');
 
 
 class UserController
@@ -97,10 +99,26 @@ class UserController
 
   }
 
+
+  function delete_gallery() {
+    $result = $this->user_model->delete_gallery_confirm();
+    $main_view = new DeleteGalleryConfirm;
+    $main_view->show($result);
+  }
+
+
   function edit_gallery() {
     //$this->user_model->edit_gallery();
+    $images = $this->user_model->display_single_gallery_images();
     $galleryName = $this->user_model->single_gallery_view();
     $main_view = new EditGallery;
+    $main_view->show($galleryName, $images);
+  }
+
+  function edit_gallery_name() {
+    //$this->user_model->edit_gallery();
+    $galleryName = $this->user_model->single_gallery_view();
+    $main_view = new EditGalleryName;
     $main_view->show($galleryName);
   }
 
