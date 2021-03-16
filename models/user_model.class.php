@@ -129,6 +129,10 @@ class UserModel
   {
   }
 
+  function edit_profile()
+  {
+  }
+
   function add_gallery()
   {
   }

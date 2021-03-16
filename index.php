@@ -50,21 +50,24 @@ switch ($action) {
   case "profile":
     $user_controller->profile();
     break;
+  case "edit_profile":
+    $user_controller->edit_profile();
+    break;
   case "add_gallery":
     $user_controller->add_gallery();
     break;
   case "add_gallery_confirm":
     $user_controller->add_gallery_confirm();
     break;
-    case "delete_gallery":
-      $user_controller->delete_gallery();
-      break;
+  case "delete_gallery":
+    $user_controller->delete_gallery();
+    break;
   case "edit_gallery":
     $user_controller->edit_gallery();
     break;
-    case "edit_gallery_name":
-      $user_controller->edit_gallery_name();
-      break;
+  case "edit_gallery_name":
+    $user_controller->edit_gallery_name();
+    break;
   case "edit_gallery_confirm":
     $user_controller->edit_gallery_confirm();
     break;
@@ -77,15 +80,15 @@ switch ($action) {
   case "add_image_confirm":
     $user_controller->add_image_confirm();
     break;
-    case "edit_img_tag":
-      $user_controller->edit_img_tag();
-      break;
-      case "edit_img_tag_confirm":
-        $user_controller->edit_img_tag_confirm();
-        break;
-    case "delete_image":
-      $user_controller->delete_image();
-      break;
+  case "edit_img_tag":
+    $user_controller->edit_img_tag();
+    break;
+  case "edit_img_tag_confirm":
+    $user_controller->edit_img_tag_confirm();
+    break;
+  case "delete_image":
+    $user_controller->delete_image();
+    break;
   case "reset":
     $user_controller->reset();
     break;

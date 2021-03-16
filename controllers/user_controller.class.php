@@ -17,6 +17,7 @@ require_once('views/register_confirm/register_confirm.class.php');
 require_once('views/logout_confirm/logout_confirm.class.php');
 //Profile
 require_once('views/profile/profile.class.php');
+require_once('views/edit_profile/edit_profile.class.php');
 //Image
 require_once('views/add_image_confirm/add_image_confirm.class.php');
 require_once('views/add_image/add_image.class.php');
@@ -200,6 +201,17 @@ class UserController
     $image = $this->user_model->get_profile_img();
     $this->user_model->profile();
     $main_view = new Profile;
+    $main_view->show($results, $username, $image);
+  }
+
+  //Edit profile for user
+  function edit_profile()
+  {
+    $results = $this->user_model->get_single_user_galleries();
+    $username = $this->user_model->get_last_username();
+    $image = $this->user_model->get_profile_img();
+    $this->user_model->edit_profile();
+    $main_view = new EditProfile;
     $main_view->show($results, $username, $image);
   }
 
