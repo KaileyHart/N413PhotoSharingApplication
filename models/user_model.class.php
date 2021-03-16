@@ -189,6 +189,7 @@ class UserModel
       
         $result = $this->db->insert_img($sql);
 
+        //Selects the img id
       $sql = "SELECT pk_img_id FROM final_images ORDER BY pk_img_id DESC LIMIT 1";
 
         $IDresult = $this->conn->query($sql);
@@ -203,6 +204,7 @@ class UserModel
         print_r($imageInfo);
        $imageID = $imageInfo[0]["pk_img_id"];
 
+       //Uses the img id to pair with a tag
        $sql =
         "INSERT INTO final_img_tags (fk_img_id, fk_tag_id) VALUES ('$imageID', '$tag')";
 
@@ -215,6 +217,41 @@ class UserModel
 
   function add_image()
   {  
+  }
+
+  function delete_image_confirm() {
+    session_start();
+    
+  //   $sql = "SELECT pk_img_id FROM final_images";
+  //   $IDresult = $this->conn->query($sql);
+  //   print_r($sql);
+
+  //   print_r($IDresult);
+
+  //   $imageInfo = array();
+  //   while ($row = $IDresult->fetch_assoc()) {
+  //     $imageInfo[] = $row;
+  //   }
+
+  //   print_r($imageInfo);
+
+  //  $imageID = $imageInfo[0]["pk_img_id"];
+  
+    
+    if(isset($_GET['id'])) {
+      print_r($_GET['id']);
+      $sql = "DELETE FROM final_images WHERE pk_img_id =" .$_GET['id'] ."";
+      echo "SQL:" . $sql . "<br>";
+      print_r($sql);
+      echo "<hr>";
+      $result = $this->conn->query($sql);
+      return $result;
+      print_r($_GET['id']);
+    }
+
+    //fk_gallery_id =" .$_GET['id'] ." AND
+
+    
   }
 
   function display_single_gallery_images() {

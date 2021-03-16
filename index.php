@@ -77,6 +77,9 @@ switch ($action) {
   case "add_image_confirm":
     $user_controller->add_image_confirm();
     break;
+    case "delete_image":
+      $user_controller->delete_image();
+      break;
   case "reset":
     $user_controller->reset();
     break;

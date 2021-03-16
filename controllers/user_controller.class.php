@@ -25,6 +25,7 @@ require_once('views/edit_gallery/edit_gallery.class.php');
 require_once('views/edit_gallery_confirm/edit_gallery_confirm.php');
 require_once('views/edit_gallery_name/edit_gallery_name.class.php');
 require_once('views/delete_gallery_confirm/delete_gallery_confirm.class.php');
+require_once('views/delete_image_confirm/delete_image_confirm.class.php');
 
 
 class UserController
@@ -143,6 +144,12 @@ class UserController
     //$this->user_model->add_image();
     $main_view = new AddImage;
     $main_view->show($galleryName);
+  }
+
+  function delete_image() {
+    $result = $this->user_model->delete_image_confirm();
+    $main_view = new DeleteImageConfirm;
+    $main_view->show($result);
   }
 
 

@@ -49,12 +49,17 @@ class EditGallery extends MainView  {
                     if ($images === 0) {
                         echo "No images were found. Please add one.";
                     } else {
+                      
 
                         foreach ($images as $image) {
+
+                            $imgId = $image["pk_img_id"];
+                            echo "$imgId";
                             echo "<div class='gallery_images--top'>
                             <div class='gallery_images'>
                             
-                            <div class='gallery_images--info'><div style='display: flex;align-items: center;'><button><a href='index.php?action=delete_image&id=<?php '" . $image["pk_img_id"] . " php?>'> Delete</a></button>
+                            <div class='gallery_images--info'><div style='display: flex;align-items: center;'>
+                            <p>'" . $image["pk_img_id"] . "'</p><button><a href='index.php?action=delete_image&id=$imgId' > Delete</a></button>
                             <p style='padding-left: 5px;'>" . $image['img_alt'] . "</p></div> <p class='gallery_images--tag'> " . $image['tag_name'] . " </p></div>
                             <img class='middle_gallery_img' alt='" . $image["img_alt"] ."' src='" . $image["img_path"] ."' / ></div></div>"; 
                         }

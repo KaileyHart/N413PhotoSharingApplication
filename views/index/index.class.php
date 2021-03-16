@@ -32,6 +32,7 @@ class Index extends MainView
                       
 
                         foreach ($results as $result) {
+                            print_r($result['pk_img_id']);
                             echo "<div class='index_images--top'>
                             <div class='index_images'>
                             <div class='index_images--info'>
