@@ -143,10 +143,7 @@ class UserModel
       $result = $this->conn->query($sql);
       return $result;
     }
-
-    
   }
-
 
   function edit_gallery() {}
   function edit_gallery_name() {}
@@ -214,30 +211,13 @@ class UserModel
     }
   }
 
-
   function add_image()
   {  
   }
 
+  //Delete an image in a gallery 
   function delete_image_confirm() {
-    session_start();
-    
-  //   $sql = "SELECT pk_img_id FROM final_images";
-  //   $IDresult = $this->conn->query($sql);
-  //   print_r($sql);
-
-  //   print_r($IDresult);
-
-  //   $imageInfo = array();
-  //   while ($row = $IDresult->fetch_assoc()) {
-  //     $imageInfo[] = $row;
-  //   }
-
-  //   print_r($imageInfo);
-
-  //  $imageID = $imageInfo[0]["pk_img_id"];
-  
-    
+    session_start(); 
     if(isset($_GET['id'])) {
       print_r($_GET['id']);
       $sql = "DELETE FROM final_images WHERE pk_img_id =" .$_GET['id'] ."";
@@ -248,17 +228,31 @@ class UserModel
       return $result;
       print_r($_GET['id']);
     }
-
-    //fk_gallery_id =" .$_GET['id'] ." AND
-
-    
   }
 
+  function edit_img_tag() {
+  }
+
+  //Update the image tag
+  function edit_img_tag_confirm() {
+    session_start();
+    if (isset($_POST['submit'])) {
+      $tag = $_POST["tag"];
+
+      $sql = "UPDATE final_img_tags SET fk_tag_id = '$tag' WHERE fk_img_id = ". $_GET["id"] ." ";
+
+      echo "SQL:" . $sql . "<br>";
+      echo "<hr>";
+      $result = $this->conn->query($sql);
+      return $result;
+    }
+  }
+
+
   function display_single_gallery_images() {
-    //session_start();
 
     $galleryId = (isset($_GET['id']) ? $_GET['id'] : '');
-    // $sql = "SELECT * FROM final_images WHERE fk_gallery_id = $gallery_id";
+    //Select all from final_images, final_tags, & final_img_tags where he id's match
     $sql = "SELECT *
     FROM final_images i, final_tags t, final_img_tags it
     WHERE i.pk_img_id = it.fk_img_id

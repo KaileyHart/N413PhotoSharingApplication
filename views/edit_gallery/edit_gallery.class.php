@@ -54,14 +54,32 @@ class EditGallery extends MainView  {
                         foreach ($images as $image) {
 
                             $imgId = $image["pk_img_id"];
-                            echo "$imgId";
-                            echo "<div class='gallery_images--top'>
+                            echo "
+                            <div class='gallery_images--top'>
                             <div class='gallery_images'>
                             
-                            <div class='gallery_images--info'><div style='display: flex;align-items: center;'>
-                            <p>'" . $image["pk_img_id"] . "'</p><button><a href='index.php?action=delete_image&id=$imgId' > Delete</a></button>
-                            <p style='padding-left: 5px;'>" . $image['img_alt'] . "</p></div> <p class='gallery_images--tag'> " . $image['tag_name'] . " </p></div>
-                            <img class='middle_gallery_img' alt='" . $image["img_alt"] ."' src='" . $image["img_path"] ."' / ></div></div>"; 
+                            <div class='gallery_images--info'>
+                            <div style='display: flex;align-items: center;'>
+
+                         
+                            <p style='padding-left: 5px;'>" . $image['img_alt'] . "</p>
+                            </div> 
+                            <p class='gallery_images--tag'> " . $image['tag_name'] . " </p>
+                            </div>
+                            <div style='margin-bottom: 10px; display: flex;justify-content: space-between;;align-items: center;'>
+                          <div>
+                            <button style='margin-left: 15px;'><a href='index.php?action=delete_image&id=$imgId' > Delete</a></button>
+                            </div>
+                            <div>
+                            <button style='margin-right: 15px;'><a href='index.php?action=edit_img_tag&id=$imgId'>Edit Tag</a></button>
+                            </div>
+                           
+                            </div>
+                            <img class='middle_gallery_img' alt='" . $image["img_alt"] ."' src='" . $image["img_path"] ."' / >
+                           
+                            </div>
+                            
+                        </div>"; 
                         }
 
                       

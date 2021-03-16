@@ -77,6 +77,12 @@ switch ($action) {
   case "add_image_confirm":
     $user_controller->add_image_confirm();
     break;
+    case "edit_img_tag":
+      $user_controller->edit_img_tag();
+      break;
+      case "edit_img_tag_confirm":
+        $user_controller->edit_img_tag_confirm();
+        break;
     case "delete_image":
       $user_controller->delete_image();
       break;
