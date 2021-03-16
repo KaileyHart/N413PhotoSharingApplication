@@ -21,18 +21,18 @@ class EditProfile extends MainView
 ?>
 
         <div class="profile__container">
-            <div class="left">
+            <div class="edit_left">
                 <h2>Edit Your Profile</h2>
-                <div class="left__container">
-                    <div style="max-width: 250px; height: auto;" class="left_user_image--container">
-                      <img  class="left_user_image" alt="profile image" src="dist/images/<?=$image['user_img']?>"> 
+                <div class="edit_left__container">
+                    <div style="max-width: 250px; height: auto;" class="edit_left_user_image--container">
+                      <img  class="edit_left_user_image" alt="profile image" src="dist/images/<?=$image['user_img']?>"> 
                     </div>
-                    <div class="left__buttons">
+                    <div class="edit_left__buttons">
                         <p><?=$username['username']?></p>
-                        <button><a href="index.php?action=edit_profile_username"> Edit Username</a> </button>
-                        <button><a href="index.php?action=edit_profile_img"> Edit Profile Image</a> </button>
+                        <button><a href="index.php?action=edit_profile_username&id=<?=$username['pk_user_id']?>"> Edit Username</a> </button>
+                        <button><a href="index.php?action=edit_profile_image&id=<?=$username['pk_user_id']?>"> Edit Profile Image</a> </button>
                         <!-- <button><a href="index.php?action=reset_profile_pass">Reset Password</a> </button> -->
-                        <button><a href="index.php?action=delete_profile">Delete Profile</a> </button>
+                        <button><a href="index.php?action=delete_profile_confirm&id=<?=$username['pk_user_id']?>">Delete Profile</a> </button>
                     </div>
 
                 </div>

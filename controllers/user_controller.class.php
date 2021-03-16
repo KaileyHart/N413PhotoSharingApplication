@@ -18,6 +18,11 @@ require_once('views/logout_confirm/logout_confirm.class.php');
 //Profile
 require_once('views/profile/profile.class.php');
 require_once('views/edit_profile/edit_profile.class.php');
+require_once('views/edit_profile_username/edit_profile_username.class.php');
+require_once('views/edit_profile_image/edit_profile_image.class.php');
+require_once('views/edit_profile_image_confirm/edit_profile_image_confirm.class.php');
+require_once('views/edit_profile_username_confirm/edit_profile_username_confirm.class.php');
+require_once('views/delete_profile_confirm/delete_profile_confirm.class.php');
 //Image
 require_once('views/add_image_confirm/add_image_confirm.class.php');
 require_once('views/add_image/add_image.class.php');
@@ -204,7 +209,7 @@ class UserController
     $main_view->show($results, $username, $image);
   }
 
-  //Edit profile for user
+  //Edit profile page 
   function edit_profile()
   {
     $results = $this->user_model->get_single_user_galleries();
@@ -212,6 +217,59 @@ class UserController
     $image = $this->user_model->get_profile_img();
     $this->user_model->edit_profile();
     $main_view = new EditProfile;
+    $main_view->show($results, $username, $image);
+  }
+
+   //Edit profile username for user
+   function edit_profile_username()
+   {
+     $results = $this->user_model->get_single_user_galleries();
+     $username = $this->user_model->get_last_username();
+     $image = $this->user_model->get_profile_img();
+     $this->user_model->edit_profile();
+     $main_view = new EditProfileUsername;
+     $main_view->show($results, $username, $image);
+   }
+    //Edit profile image for user
+  function edit_profile_image()
+  {
+    $results = $this->user_model->get_single_user_galleries();
+    $username = $this->user_model->get_last_username();
+    $image = $this->user_model->get_profile_img();
+    $this->user_model->edit_profile();
+    $main_view = new EditProfileImage;
+    $main_view->show($results, $username, $image);
+  }
+
+     //Edit profile username for user
+     function edit_profile_username_confirm()
+     {
+       $results = $this->user_model->get_single_user_galleries();
+       $username = $this->user_model->get_last_username();
+       $image = $this->user_model->get_profile_img();
+       $this->user_model->edit_profile();
+       $main_view = new EditProfileUsernameConfirm;
+       $main_view->show($results, $username, $image);
+     }
+      //Edit profile image for user
+    function edit_profile_image_confirm()
+    {
+      $results = $this->user_model->get_single_user_galleries();
+      $username = $this->user_model->get_last_username();
+      $image = $this->user_model->get_profile_img();
+      $this->user_model->edit_profile();
+      $main_view = new EditProfileImageConfirm;
+      $main_view->show($results, $username, $image);
+    }
+
+  //Delete user profile 
+  function delete_profile_confirm()
+  {
+    $results = $this->user_model->get_single_user_galleries();
+    $username = $this->user_model->get_last_username();
+    $image = $this->user_model->get_profile_img();
+    $this->user_model->edit_profile();
+    $main_view = new DeleteProfileConfirm;
     $main_view->show($results, $username, $image);
   }
 

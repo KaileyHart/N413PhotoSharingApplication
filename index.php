@@ -53,6 +53,21 @@ switch ($action) {
   case "edit_profile":
     $user_controller->edit_profile();
     break;
+  case "edit_profile_username":
+    $user_controller->edit_profile_username();
+    break;
+  case "edit_profile_image":
+    $user_controller->edit_profile_image();
+    break;
+  case "edit_profile_username_confirm":
+    $user_controller->edit_profile_username_confirm();
+    break;
+  case "edit_profile_image_confirm":
+    $user_controller->edit_profile_image_confirm();
+    break;
+  case "delete_profile_confirm":
+    $user_controller->delete_profile_confirm();
+    break;
   case "add_gallery":
     $user_controller->add_gallery();
     break;

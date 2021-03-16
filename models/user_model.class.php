@@ -19,11 +19,7 @@ class UserModel
     $this->conn = $this->db->getSQL();
   }
 
-  //Delete user
-  function delete()
-  {
-  }
-
+ 
   //Reset password?
   function reset()
   {
@@ -132,6 +128,24 @@ class UserModel
   function edit_profile()
   {
   }
+  function edit_profile_username()
+  {
+  }
+  function edit_profile_image()
+  {
+  }
+  function edit_profile_username_confirm()
+  {
+  }
+  function edit_profile_image_confirm()
+  {
+  }
+
+   //Delete user
+   function delete_profile_confirm()
+   {
+   }
+ 
 
   function add_gallery()
   {
