@@ -24,7 +24,7 @@ class AddGalleryConfirm extends MainView
 
         <div class="top-row">
             <h2>You successfully added a gallery!</h2>
-
+            <button><a href="index.php?action=single_gallery_view&id=''"> View Gallery </a></button>
 
         </div>
 

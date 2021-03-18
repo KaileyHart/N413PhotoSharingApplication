@@ -268,7 +268,7 @@ class UserController
     $results = $this->user_model->get_single_user_galleries();
     $username = $this->user_model->get_last_username();
     $image = $this->user_model->get_profile_img();
-    $this->user_model->edit_profile();
+    $this->user_model->delete_profile_confirm();
     $main_view = new DeleteProfileConfirm;
     $main_view->show($results, $username, $image);
   }

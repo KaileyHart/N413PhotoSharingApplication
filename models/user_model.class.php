@@ -19,7 +19,7 @@ class UserModel
     $this->conn = $this->db->getSQL();
   }
 
- 
+
   //Reset password?
   function reset()
   {
@@ -71,7 +71,7 @@ class UserModel
 
       $user_id = mysqli_insert_id($this->conn);
       if ($user_id) {
-      session_start();
+        session_start();
         $_SESSION["pk_user_id"] = $user_id;
       }
 
@@ -143,40 +143,70 @@ class UserModel
       $username = trim(filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING));
       echo "Username:" . $username . "<br>";
 
-      $sql = "UPDATE final_users SET username = '$username' WHERE pk_user_id = ". $_GET["id"] ." ";
+      $sql = "UPDATE final_users SET username = '$username' WHERE pk_user_id = " . $_GET["id"] . " ";
       echo "SQL:" . $sql . "<br>";
       echo "<hr>";
 
-     $result = $this->conn->query($sql);
+      $result = $this->conn->query($sql);
       echo "result: " . $result;
 
       return $result;
     }
-
   }
 
 
   function edit_profile_image_confirm()
   {
+    $image = $_FILES['image']['name'];
+    $tempname = $_FILES["image"]["tmp_name"];
+    $folder = "dist/images/" . $image;
 
+    $sql = "UPDATE final_users SET user_img = '$image' WHERE pk_user_id = " . $_GET["id"] . " ";
+    echo "SQL:" . $sql . "<br>";
+    echo "<hr>";
 
+    if (move_uploaded_file($tempname, $folder)) {
+      echo "Image uploaded successfully";
+    } else {
+      echo "Failed to upload image";
+    }
+
+    $result = $this->conn->query($sql);
+
+    echo "result: " . $result;
+
+    return $result;
   }
 
-   //Delete user
-   function delete_profile_confirm()
-   {
-   }
- 
+  //Delete user
+  function delete_profile_confirm()
+  {
+    session_start();
+    if (isset($_GET['id'])) {
+      $sql = "DELETE FROM final_users WHERE pk_user_id =" . $_GET['id'] . "";
+      echo "SQL:" . $sql . "<br>";
+      echo "<hr>";
+      $result = $this->conn->query($sql);
+
+
+      
+      unset($_SESSION);
+      session_destroy();
+      return $result;
+    }
+  }
+
 
   function add_gallery()
   {
   }
 
 
-  function delete_gallery_confirm() {
+  function delete_gallery_confirm()
+  {
     session_start();
-    if(isset($_GET['id'])) {
-      $sql = "DELETE FROM " . $this->db->getGalleryTable() . " WHERE pk_gallery_id =" .$_GET['id'] ."";
+    if (isset($_GET['id'])) {
+      $sql = "DELETE FROM " . $this->db->getGalleryTable() . " WHERE pk_gallery_id =" . $_GET['id'] . "";
       echo "SQL:" . $sql . "<br>";
       echo "<hr>";
       $result = $this->conn->query($sql);
@@ -184,8 +214,12 @@ class UserModel
     }
   }
 
-  function edit_gallery() {}
-  function edit_gallery_name() {}
+  function edit_gallery()
+  {
+  }
+  function edit_gallery_name()
+  {
+  }
 
   function add_image_confirm()
   {
@@ -221,45 +255,46 @@ class UserModel
       $sql =
         "INSERT INTO final_images (fk_gallery_id, img_path, img_alt ) VALUES ('$galleryId', '$folder', '$imageAlt')";
       // INSERT INTO final_tags (tag_name, fk_image_id) VALUES ('$tag', '$imageId');";
-     
-      
-        $result = $this->db->insert_img($sql);
 
-        //Selects the img id
+
+      $result = $this->db->insert_img($sql);
+
+      //Selects the img id
       $sql = "SELECT pk_img_id FROM final_images ORDER BY pk_img_id DESC LIMIT 1";
 
-        $IDresult = $this->conn->query($sql);
+      $IDresult = $this->conn->query($sql);
 
-        print_r($IDresult);
+      print_r($IDresult);
 
-        $imageInfo = array();
-        while ($row = $IDresult->fetch_assoc()) {
-          $imageInfo[] = $row;
-        }
+      $imageInfo = array();
+      while ($row = $IDresult->fetch_assoc()) {
+        $imageInfo[] = $row;
+      }
 
-        print_r($imageInfo);
-       $imageID = $imageInfo[0]["pk_img_id"];
+      print_r($imageInfo);
+      $imageID = $imageInfo[0]["pk_img_id"];
 
-       //Uses the img id to pair with a tag
-       $sql =
+      //Uses the img id to pair with a tag
+      $sql =
         "INSERT INTO final_img_tags (fk_img_id, fk_tag_id) VALUES ('$imageID', '$tag')";
 
-        $result = $this->db->insert_tag($sql);
+      $result = $this->db->insert_tag($sql);
 
-        print_r($result);
+      print_r($result);
     }
   }
 
   function add_image()
-  {  
+  {
   }
 
   //Delete an image in a gallery 
-  function delete_image_confirm() {
-    session_start(); 
-    if(isset($_GET['id'])) {
+  function delete_image_confirm()
+  {
+    session_start();
+    if (isset($_GET['id'])) {
       print_r($_GET['id']);
-      $sql = "DELETE FROM final_images WHERE pk_img_id =" .$_GET['id'] ."";
+      $sql = "DELETE FROM final_images WHERE pk_img_id =" . $_GET['id'] . "";
       echo "SQL:" . $sql . "<br>";
       print_r($sql);
       echo "<hr>";
@@ -269,16 +304,18 @@ class UserModel
     }
   }
 
-  function edit_img_tag() {
+  function edit_img_tag()
+  {
   }
 
   //Update the image tag
-  function edit_img_tag_confirm() {
+  function edit_img_tag_confirm()
+  {
     session_start();
     if (isset($_POST['submit'])) {
       $tag = $_POST["tag"];
 
-      $sql = "UPDATE final_img_tags SET fk_tag_id = '$tag' WHERE fk_img_id = ". $_GET["id"] ." ";
+      $sql = "UPDATE final_img_tags SET fk_tag_id = '$tag' WHERE fk_img_id = " . $_GET["id"] . " ";
 
       echo "SQL:" . $sql . "<br>";
       echo "<hr>";
@@ -288,7 +325,8 @@ class UserModel
   }
 
 
-  function display_single_gallery_images() {
+  function display_single_gallery_images()
+  {
 
     $galleryId = (isset($_GET['id']) ? $_GET['id'] : '');
     //Select all from final_images, final_tags, & final_img_tags where he id's match
@@ -302,29 +340,30 @@ class UserModel
 
     $results = $this->conn->query($sql);
 
-      $images = array();
+    $images = array();
 
-      while ($row = $results->fetch_assoc()) {
-        $images[] = $row;
-      }
-      return $images;
-      print_r($images);
+    while ($row = $results->fetch_assoc()) {
+      $images[] = $row;
+    }
+    return $images;
+    print_r($images);
   }
 
 
-  function edit_gallery_confirm() {
+  function edit_gallery_confirm()
+  {
     $galleryName = '';
     $galleryName = trim(filter_input(INPUT_POST, "galleryName", FILTER_SANITIZE_STRING));
 
     session_start();
     if ($_GET["id"]) {
-      $sql = "UPDATE " . $this->db->getGalleryTable() . " SET gallery_name = '$galleryName' WHERE pk_gallery_id= " . $_GET["id"] ."";
+      $sql = "UPDATE " . $this->db->getGalleryTable() . " SET gallery_name = '$galleryName' WHERE pk_gallery_id= " . $_GET["id"] . "";
       echo "SQL:" . $sql . "<br>";
       echo "<hr>";
       $result = $this->conn->query($sql);
 
       return $result;
-    } 
+    }
   }
 
   //Adds gallery
@@ -374,9 +413,9 @@ class UserModel
 
     return $username;
   }
-  
 
- //Gets the gallery name for a single user
+
+  //Gets the gallery name for a single user
   function get_gallery_name()
   {
     session_start();
@@ -400,8 +439,6 @@ class UserModel
     $galleryName = $this->db->get_gallery_name($sql);
 
     return $galleryName;
-
-    
   }
 
   //Gets the profile image of a user
