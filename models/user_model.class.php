@@ -134,11 +134,32 @@ class UserModel
   function edit_profile_image()
   {
   }
+
+  //Edit user profile
   function edit_profile_username_confirm()
   {
+    if (isset($_POST['submit'])) {
+      $username = '';
+      $username = trim(filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING));
+      echo "Username:" . $username . "<br>";
+
+      $sql = "UPDATE final_users SET username = '$username' WHERE pk_user_id = ". $_GET["id"] ." ";
+      echo "SQL:" . $sql . "<br>";
+      echo "<hr>";
+
+     $result = $this->conn->query($sql);
+      echo "result: " . $result;
+
+      return $result;
+    }
+
   }
+
+
   function edit_profile_image_confirm()
   {
+
+
   }
 
    //Delete user

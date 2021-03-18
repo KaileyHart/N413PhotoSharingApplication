@@ -244,10 +244,10 @@ class UserController
      //Edit profile username for user
      function edit_profile_username_confirm()
      {
+       $this->user_model->edit_profile_username_confirm();
        $results = $this->user_model->get_single_user_galleries();
        $username = $this->user_model->get_last_username();
        $image = $this->user_model->get_profile_img();
-       $this->user_model->edit_profile();
        $main_view = new EditProfileUsernameConfirm;
        $main_view->show($results, $username, $image);
      }
@@ -257,7 +257,7 @@ class UserController
       $results = $this->user_model->get_single_user_galleries();
       $username = $this->user_model->get_last_username();
       $image = $this->user_model->get_profile_img();
-      $this->user_model->edit_profile();
+      $this->user_model->edit_profile_image_confirm();
       $main_view = new EditProfileImageConfirm;
       $main_view->show($results, $username, $image);
     }
