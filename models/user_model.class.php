@@ -481,7 +481,8 @@ class UserModel
     WHERE i.pk_img_id = it.fk_img_id
     AND t.pk_tag_id = it.fk_tag_id
     AND g.pk_gallery_id = i.fk_gallery_id
-    AND g.fk_user_id = u.pk_user_id";
+    AND g.fk_user_id = u.pk_user_id
+    AND g.isPrivate = 0";
 
     $results = $this->conn->query($sql);
     return $results;

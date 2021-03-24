@@ -10,6 +10,11 @@
 .left .right__container {
     display: flex;
     justify-content: space-between;
+    
+}
+.left .right__container h2 {
+    width: 300px;
+    
 }
 .left .left__container .left__image {
     height: 225px;
@@ -31,11 +36,17 @@
     width: 150px;
     height: 45px;
     border-radius: 5px;
-    background-color: #fff;;
+    background-color: #000;
+    border: none;
+   
+
 }
 
 .left .left__container .left__buttons button a {
     font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    
 }
 
 .middle_gallery_img {

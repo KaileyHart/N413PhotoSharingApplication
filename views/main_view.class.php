@@ -103,7 +103,7 @@ class MainView
           </ul>
           <ul class="navbar-nav  ms-auto">
             <li class="nav-item">
-              <a class="nav-link nav-icons-plus active" href="#"><i class="fa fa-fw fa-plus"></i></a>
+              <a class="nav-link nav-icons-plus active" href="index.php?action=add_gallery"><i class="fa fa-fw fa-plus"></i></a>
             </li>
             <li class="nav-item dropdown">
               <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">

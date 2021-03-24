@@ -23,9 +23,14 @@ class EditGallery extends MainView  {
 
             <div class="left">
                 <div class="right__container">
-                    
-                        <button><a href="index.php?action=profile"> Back</a></button>
+                <div style="display: flex; align-items: center;">
+                        <a href="index.php?action=single_gallery_view&id=<?= $_GET['id']?>" style="margin-right: 2%; color: black"> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-backspace-fill" viewBox="0 0 16 16">
+                                <path d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z" />
+                            </svg>
+                        </a>
                         <h2>Edit <?= $galleryName[0]["gallery_name"]; ?></h2>
+                    </div>
+                      
                     
                 </div>
 
@@ -34,7 +39,8 @@ class EditGallery extends MainView  {
 
                         <button><a href="index.php?action=add_image&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"> + Add Image</a> </button>
                         <button><a href="index.php?action=edit_gallery_name&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"">Edit Gallery Name</a> </button>
-                        <button><a href="index.php?action=delete_gallery&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"">Delete Gallery</a> </button>
+                       
+                        <button style="background-color: #ff0000;"><a href="index.php?action=delete_gallery&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"">Delete Gallery</a> </button>
                     </div>
 
                 </div>
@@ -68,10 +74,10 @@ class EditGallery extends MainView  {
                             </div>
                             <div style='margin-bottom: 10px; display: flex;justify-content: space-between;;align-items: center;'>
                           <div>
-                            <button style='margin-left: 15px;'><a href='index.php?action=delete_image&id=$imgId' > Delete</a></button>
+                            <button style='margin-left: 15px; background-color: #ff0000; border: none; border-radius: 5px;'><a style='color: #fff; text-decoration: none;' href='index.php?action=delete_image&id=$imgId' > Delete</a></button>
                             </div>
                             <div>
-                            <button style='margin-right: 15px;'><a href='index.php?action=edit_img_tag&id=$imgId'>Edit Tag</a></button>
+                            <button style='margin-right: 15px; background-color:#484BDB; border: none; border-radius: 5px;'><a style='color: #fff; text-decoration: none;' href='index.php?action=edit_img_tag&id=$imgId'>Edit Tag</a></button>
                             </div>
                            
                             </div>
