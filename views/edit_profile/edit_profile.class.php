@@ -36,10 +36,10 @@ class EditProfile extends MainView
                     </div>
                     <div class="edit_left__buttons">
                         <p><?= $username['username'] ?></p>
-                        <button><a href="index.php?action=edit_profile_username&id=<?= $username['pk_user_id'] ?>"> Edit Username</a> </button>
-                        <button><a href="index.php?action=edit_profile_image&id=<?= $username['pk_user_id'] ?>"> Edit Profile Image</a> </button>
+                        <button style="background-color: #000; border: none; border-radius: 5px;"><a style="color: #fff; text-decoration: none;"  href="index.php?action=edit_profile_username&id=<?= $username['pk_user_id'] ?>"> Edit Username</a> </button>
+                        <button style="background-color: #000; border: none; border-radius: 5px;"><a style="color: #fff; text-decoration: none;"  href="index.php?action=edit_profile_image&id=<?= $username['pk_user_id'] ?>"> Edit Profile Image</a> </button>
                         <!-- <button><a href="index.php?action=reset_profile_pass">Reset Password</a> </button> -->
-                        <button><a href="index.php?action=delete_profile_confirm&id=<?= $username['pk_user_id'] ?>">Delete Profile</a> </button>
+                        <button style="background-color: #ff0000; border: none; border-radius: 5px;"><a style="color: #fff; text-decoration: none;" href="index.php?action=delete_profile_confirm&id=<?= $username['pk_user_id'] ?>">Delete Profile</a> </button>
                     </div>
 
                 </div>
