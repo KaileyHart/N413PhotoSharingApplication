@@ -1,4 +1,4 @@
-<?php
+p<?php
 /*
  * Author: Kailey Hart
  * Date: 02-12-2021
@@ -189,7 +189,7 @@ class UserModel
       $result = $this->conn->query($sql);
 
 
-      
+
       unset($_SESSION);
       session_destroy();
       return $result;
@@ -371,6 +371,9 @@ class UserModel
   {
     $galleryName = '';
     $galleryName = trim(filter_input(INPUT_POST, "galleryName", FILTER_SANITIZE_STRING));
+    //1 = yes & 0 = no
+    $isPrivate = trim(filter_input(INPUT_POST, "isPrivate", FILTER_SANITIZE_STRING));
+    
 
     session_start();
     if ($_GET["id"]) {
@@ -386,7 +389,7 @@ class UserModel
       }
       return $galleryInfo;
     } else {
-      $sql = "INSERT INTO " . $this->db->getGalleryTable() . " (fk_user_id, gallery_name) VALUES ('" . $_SESSION['pk_user_id'] . "','$galleryName')";
+      $sql = "INSERT INTO " . $this->db->getGalleryTable() . " (fk_user_id, gallery_name, isPrivate) VALUES ('" . $_SESSION['pk_user_id'] . "','$galleryName', '$isPrivate')";
       echo "SQL:" . $sql . "<br>";
 
       $result = $this->db->insert_gallery($sql);

@@ -12,17 +12,30 @@ class AddGallery extends MainView
   {
     parent::header();
 ?>
-<h2> Add Gallery</h2>
-      <form method="POST" action="index.php?action=add_gallery_confirm">
-    <div class="row mt-5">
+    <h2> Add Gallery</h2>
+    <form method="POST" action="index.php?action=add_gallery_confirm">
+      <div class="row mt-5">
         <div class="col-4"></div>
         <div id="form-container" class="col-4">
-            Gallery Name: <input type="text" id="galleryName" name="galleryName" class="form-control" value="" placeholder="Gallery Name" required /><br />
-            
-            <button type="submit" id="submit" class="btn btn-dark float-right">Submit</button>
+          Gallery Name: <input type="text" id="galleryName" name="galleryName" class="form-control" value="" placeholder="Gallery Name" required /><br />
+          Make Gallery Private? <br />
+          <div>
+            <label>
+              <input type="radio" id="isPrivate" name="isPrivate" value="1">
+              Yes
+            </label>
+            <br />
+            <label>
+              <input type="radio" id="isPrivate" name="isPrivate" value="0">
+              No
+            </label>
+          </div>
+
+
+          <button type="submit" id="submit" class="btn btn-dark float-right">Submit</button>
         </div>
-    </div>
-</form>
+      </div>
+    </form>
 
 <?php
     parent::footer();
