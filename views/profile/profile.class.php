@@ -25,7 +25,7 @@ class Profile extends MainView
                 <h2>Your Profile</h2>
                 <div class="left__container">
                     <div style="max-width: 225px; height: auto;" class="left_user_image--container">
-                      <img  class="left_user_image" alt="profile image" src="dist/images/<?=$image['user_img']?>"> 
+                      <img  class="left_user_image" alt="profile image" src="<?=$image['user_img']?>"> 
                     </div>
                     <div class="left__buttons">
                         <p><?=$username['username']?></p>
@@ -49,9 +49,23 @@ class Profile extends MainView
                         foreach ($results as $result) {
                             $galleryId = $result['pk_gallery_id'];
                             echo "
-                        <div><a href='index.php?action=single_gallery_view&id=$galleryId'>
-                         <div class='gallery' data-id='" . $result['pk_gallery_id'] . "' data-item='" . $result['gallery_name'] . "'>
-                        <div><b>" . $result['gallery_name'] . "</b> " . $result['fk_user_id'] . "</b> " . $result['pk_gallery_id'] . "</div> </div> </a></div>";
+                            <div >
+                            <div>
+                                <a href='index.php?action=single_gallery_view&id=$galleryId'>
+                                    <div class='gallery' data-id='" . $result['pk_gallery_id'] . "' data-item='" . $result['gallery_name'] . "'>
+                                    <div>
+                                        <b>" . $result['gallery_name'] . "</b> 
+
+                                        </div> 
+                                    </div> 
+                                </a>
+                               
+                            </div>
+                            </div>
+                           
+                           
+                            ";
+                            //<img style='height: 100px; width: auto;' class='middle_gallery_img' alt='" . $result["img_alt"] . "' src='" . $result["img_path"] . "' / ></div>
                         }
                     }
                     
@@ -62,11 +76,13 @@ class Profile extends MainView
             <div class="right">
                 <h4>Filter by tag</h4>
                 <div class="right__container">
-                    <div class="row"></div>
-                    <div class="row"></div>
-                    <div class="row"></div>
-                    <div class="row"></div>
-                    <div class="row"></div>
+                <?php
+                   
+
+                   
+                
+                    
+                    ?>
                 </div>
             </div>
         </div>

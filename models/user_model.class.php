@@ -47,19 +47,19 @@ class UserModel
 
       $image = $_FILES['image']['name'];
       $tempname = $_FILES["image"]["tmp_name"];
-      $folder = "dist/images/" . $image;
+      $folder = "../../upload/" . $image;
       //encode the password
       $hash = password_hash($password, PASSWORD_DEFAULT);
 
-      echo "First Name:" . $firstname . "<br>";
-      echo "Last Name:" . $lastname . "<br>";
-      echo "Username:" . $username . "<br>";
-      echo "Password:" . $hash . "<br><br>";
-      echo $image;
+      // echo "First Name:" . $firstname . "<br>";
+      // echo "Last Name:" . $lastname . "<br>";
+      // echo "Username:" . $username . "<br>";
+      // echo "Password:" . $hash . "<br><br>";
+      // echo $image;
 
-      $sql = "INSERT INTO " . $this->db->getUserTable() . " (username, password, first_name, last_name, user_img ) VALUES ('$username', '$hash', '$firstname', '$lastname', '$image')";
-      echo "SQL:" . $sql . "<br>";
-      echo "<hr>";
+      $sql = "INSERT INTO " . $this->db->getUserTable() . " (username, password, first_name, last_name, user_img ) VALUES ('$username', '$hash', '$firstname', '$lastname', '$folder')";
+      // echo "SQL:" . $sql . "<br>";
+      // echo "<hr>";
 
       if (move_uploaded_file($tempname, $folder)) {
         echo "Image uploaded successfully";
@@ -159,7 +159,7 @@ class UserModel
   {
     $image = $_FILES['image']['name'];
     $tempname = $_FILES["image"]["tmp_name"];
-    $folder = "dist/images/" . $image;
+    $folder = "../../upload/" . $image;
 
     $sql = "UPDATE final_users SET user_img = '$image' WHERE pk_user_id = " . $_GET["id"] . " ";
     echo "SQL:" . $sql . "<br>";
@@ -240,7 +240,7 @@ class UserModel
 
       $image = $_FILES["galleryImage"]["name"];
       $tempname = $_FILES["galleryImage"]["tmp_name"];
-      $folder = "dist/galleryImages/" . $image;
+      $folder = "../../upload/" . $image;
 
       echo "galleryID: " . $galleryId . "<br>";
       echo "image: " . $image . "<br>";
@@ -336,7 +336,7 @@ class UserModel
     AND t.pk_tag_id = it.fk_tag_id
     AND i.fk_gallery_id = $galleryId";
 
-    print_r($sql);
+    //print_r($sql);
 
     $results = $this->conn->query($sql);
 
@@ -346,7 +346,7 @@ class UserModel
       $images[] = $row;
     }
     return $images;
-    print_r($images);
+   // print_r($images);
   }
 
 
@@ -358,8 +358,8 @@ class UserModel
     session_start();
     if ($_GET["id"]) {
       $sql = "UPDATE " . $this->db->getGalleryTable() . " SET gallery_name = '$galleryName' WHERE pk_gallery_id= " . $_GET["id"] . "";
-      echo "SQL:" . $sql . "<br>";
-      echo "<hr>";
+      //echo "SQL:" . $sql . "<br>";
+      //echo "<hr>";
       $result = $this->conn->query($sql);
 
       return $result;
@@ -378,8 +378,8 @@ class UserModel
     session_start();
     if ($_GET["id"]) {
       $sql = "SELECT * FROM final_gallery WHERE fk_user_id = '" . $_SESSION['pk_user_id'] . "' AND pk_gallery_id = '" . $_GET["id"] . "'";
-      echo "SQL:" . $sql . "<br>";
-      echo "<hr>";
+     //echo "SQL:" . $sql . "<br>";
+     // echo "<hr>";
       $result = $this->conn->query($sql);
 
       $galleryInfo = array();
@@ -390,7 +390,7 @@ class UserModel
       return $galleryInfo;
     } else {
       $sql = "INSERT INTO " . $this->db->getGalleryTable() . " (fk_user_id, gallery_name, isPrivate) VALUES ('" . $_SESSION['pk_user_id'] . "','$galleryName', '$isPrivate')";
-      echo "SQL:" . $sql . "<br>";
+      //echo "SQL:" . $sql . "<br>";
 
       $result = $this->db->insert_gallery($sql);
       return $result;
@@ -461,9 +461,22 @@ class UserModel
     session_start();
 
     $user_id = $_SESSION["pk_user_id"];
-    $gallerySql = "SELECT * FROM final_gallery WHERE fk_user_id = $user_id";
+    //$sql = "SELECT * FROM final_gallery WHERE fk_user_id = $user_id";
+    //Retrieves info from images, tags, img_tags, gallery, and users table
+    //Doesn't duplicate the information
+    // $sql = "SELECT *
+    // FROM final_images i, final_tags t, final_img_tags it, final_gallery g, final_users u
+    // WHERE i.pk_img_id = it.fk_img_id
+    // AND t.pk_tag_id = it.fk_tag_id
+    // AND g.pk_gallery_id = i.fk_gallery_id
+    // AND g.fk_user_id = $user_id
+    // AND $user_id = u.pk_user_id";
+    $sql = "SELECT *
+    FROM   final_gallery g
+    WHERE g.fk_user_id = $user_id";
 
-    $results = $this->conn->query($gallerySql);
+    $results = $this->conn->query($sql);
+    //echo $sql;
 
     return $results;
   }
@@ -484,7 +497,15 @@ class UserModel
     AND g.fk_user_id = u.pk_user_id
     AND g.isPrivate = 0";
 
+
     $results = $this->conn->query($sql);
-    return $results;
+   
+   $images = array();
+
+    while ($row = $results->fetch_assoc()) {
+      $images[] = $row;
+    }
+    //print_r($images);
+    return $images;
   }
 }

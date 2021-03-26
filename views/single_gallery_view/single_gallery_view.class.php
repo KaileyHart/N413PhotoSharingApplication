@@ -6,11 +6,10 @@
  * Description: Shows all the images in one gallery
 */
 
-class SingleGallery  extends MainView
+class SingleGallery extends MainView
 {
     function show($galleryName, $images)
     {
-        //print_r($galleryName);
         parent::header();
 
 

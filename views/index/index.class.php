@@ -9,7 +9,7 @@
 
 class Index extends MainView
 {
-    function show($results, $usernames)
+    function show($results)
     {
 
         parent::header();
@@ -32,9 +32,9 @@ class Index extends MainView
                             <div class='index_images'>
                             <div class='index_images--info'>
                             <div class='index_images--info-user'>
-                            <div  class='left_user_image_small--container'> <img style='margin-right: 10px;' class='user_img' alt='User profile image' src='dist/images/" . $result["user_img"] ."' / ></div>
+                            <div  class='left_user_image_small--container'> <img style='margin-right: 10px;' class='user_img' alt='User profile image' src='" . $result['user_img'] ."' / ></div>
                             <p style='margin-left: 10g9tmpx;' >" . $result['username'] . "</p></div>   <div class='index_images--info-tag'> <p class='index_images--tag'> " . $result['tag_name'] . " </p> <p style='padding-left: 10px;'>" . $result['gallery_name'] . "</p></div></div>
-                            <img class='middle_index_img' alt='" . $result["img_alt"] . "' src='" . $result["img_path"] . "' / ></div></div>";
+                            <img class='middle_index_img' alt='" . $result['img_alt'] . "' src='" . $result['img_path'] . "' / ></div></div>";
                         }
                     }
                     ?>
