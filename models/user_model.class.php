@@ -284,6 +284,25 @@ class UserModel
     }
   }
 
+  //Gets all tags from the final_tag table
+  function get_all_tags() {
+    $sql = "SELECT *
+    FROM final_tags";
+
+    //print_r($sql);
+
+    $results = $this->conn->query($sql);
+
+    $tags = array();
+
+    while ($row = $results->fetch_assoc()) {
+      $tags[] = $row;
+    }
+    return $tags;
+  }
+
+ 
+
   function add_image()
   {
   }
@@ -396,6 +415,7 @@ class UserModel
       return $result;
     }
   }
+  
 
   //Get all of the usernames of all of the users
   function get_all_usernames()
@@ -507,5 +527,33 @@ class UserModel
     }
     //print_r($images);
     return $images;
+  }
+
+   //filters images by tag 
+   function filter_by_tag() {
+    //session_start();
+    $filteredTagId = $_GET['tag_id'];
+
+    //Retrieves info from images, tags, img_tags, gallery, and users table
+    //Doesn't duplicate the information
+    $sql = "SELECT *
+    FROM final_images i, final_tags t, final_img_tags it, final_gallery g, final_users u
+    WHERE i.pk_img_id = it.fk_img_id
+    AND t.pk_tag_id = it.fk_tag_id
+    AND t.pk_tag_id = $filteredTagId 
+    AND g.pk_gallery_id = i.fk_gallery_id
+    AND g.fk_user_id = u.pk_user_id
+    AND g.isPrivate = 0";
+
+
+    $results = $this->conn->query($sql);
+   
+   $filteredImages = array();
+
+    while ($row = $results->fetch_assoc()) {
+      $filteredImages[] = $row;
+    }
+    //print_r($images);
+    return $filteredImages;
   }
 }

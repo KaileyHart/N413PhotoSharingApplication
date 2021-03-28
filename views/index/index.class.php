@@ -9,7 +9,7 @@
 
 class Index extends MainView
 {
-    function show($results)
+    function show($results, $tags)
     {
 
         parent::header();
@@ -40,7 +40,30 @@ class Index extends MainView
                     ?>
                 </div>
             </div>
-            <div class="index_container--right"></div>
+            <div style="margin-right: 5%;" class="index_container--right">
+            <div class="index_right">
+                        <h4>Filter by tag</h4>
+                        <div class="index_right__container">
+                            <?php
+                            $width_large = 4;
+                            $row_count = 3;
+
+                            if ($tags === 0) {
+                                echo "No images were found. Please add one.";
+                            } else {
+                                echo '<div class="row">';
+
+                                foreach ($tags as $tag) {
+                                    $row_count++;
+                                    echo "<div  class='col-$width_large tags' id=" . $tag['pk_tag_id'] . "> <button ><a href='index.php?action=filter_tag_index&tag_id=" . $tag['pk_tag_id'] . "'>" . $tag['tag_name'] . " </a></button></div>";
+                                }
+                                echo '</div>';
+                            }
+                            ?>
+                     
+                        </div>
+                    </div>
+            </div>
         </div>
 
 <?php

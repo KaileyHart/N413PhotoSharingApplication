@@ -8,7 +8,7 @@ min-width: 500px;
     max-width: 900px;
 }
 
-.left .left__container {
+.profile_left .profile_left__container {
     display: flex;
     justify-content: space-between;
 }
@@ -40,10 +40,11 @@ min-width: 500px;
     width: 300px;
 }
 
-.left .left__container .left__buttons {
+.profile_left .profile_left__container .profile_left__buttons {
     display: flex;
     flex-direction: column;
     margin-left: 5%;
+
 }
 .edit_left .edit_left__container .edit_left__buttons {
     display: flex;
@@ -59,15 +60,18 @@ min-width: 500px;
     background-color: #fff;;
 }
 
-.left .left__container .left__buttons button {
+.profile_left .profile_left__container .profile_left__buttons button {
     margin-top: 5%;
     width: 150px;
     height: 45px;
     border-radius: 5px;
-    background-color: #fff;;
+    background-color: #000;
+    border: none;
 }
 
-.left .left__container .left__buttons button a {
+.profile_left .profile_left__container .profile_left__buttons button a {
     font-size: 16px;
+    color: #fff;
+    text-decoration: none;
 }
 

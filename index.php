@@ -104,6 +104,9 @@ switch ($action) {
   case "delete_image":
     $user_controller->delete_image();
     break;
+  case "filter_tag_index":
+    $user_controller->filter_tag_index();
+    break;
   case "reset":
     $user_controller->reset();
     break;

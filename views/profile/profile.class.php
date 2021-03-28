@@ -21,13 +21,13 @@ class Profile extends MainView
 ?>
 
         <div class="profile__container">
-            <div class="left">
+            <div class="profile_left">
                 <h2>Your Profile</h2>
-                <div class="left__container">
+                <div class="profile_left__container">
                     <div style="max-width: 225px; height: auto;" class="left_user_image--container">
                       <img  class="left_user_image" alt="profile image" src="<?=$image['user_img']?>"> 
                     </div>
-                    <div class="left__buttons">
+                    <div class="profile_left__buttons">
                         <p><?=$username['username']?></p>
                         <button><a href="index.php?action=add_gallery"> + Add gallery</a> </button>
                         <button><a href="index.php?action=edit_profile">Edit Profile</a> </button>
@@ -74,16 +74,7 @@ class Profile extends MainView
             </div>
 
             <div class="right">
-                <h4>Filter by tag</h4>
-                <div class="right__container">
-                <?php
-                   
-
-                   
                 
-                    
-                    ?>
-                </div>
             </div>
         </div>
 

@@ -5,11 +5,7 @@
  * Name: user_controller.class.php
  * Description: Controls each 'view'
 */
-// require_once('models/user_model.class.php');
-// //Views
-// require_once('views/index/index.class.php');
-// require_once('views/register/register.class.php');
-// require_once('views/login/login.class.php');
+
 
 // login, logout, register
 require_once('views/login_confirm/login_confirm.class.php');
@@ -38,7 +34,7 @@ require_once('views/delete_gallery_confirm/delete_gallery_confirm.class.php');
 //Tags
 require_once('views/edit_img_tag/edit_img_tag.class.php');
 require_once('views/edit_img_tag_confirm/edit_img_tag_confirm.class.php');
-
+require_once('views/filter_tag_index/filter_tag_index.class.php');
 
 
 
@@ -57,9 +53,10 @@ class UserController
   //Shows home page
   function index()
   {
+    $tags = $this->user_model->get_all_tags();
     $results = $this->user_model->get_all_galleries();
     $main_view = new Index();
-    $main_view->show($results);
+    $main_view->show($results, $tags);
   }
 
   //Calls register method from user model & shows Registration form
@@ -148,10 +145,11 @@ class UserController
   //Add gallery 
   function single_gallery_view()
   {
+    $tags = $this->user_model->get_all_tags();
     $galleryName = $this->user_model->single_gallery_view();
     $images = $this->user_model->display_single_gallery_images();
     $main_view = new SingleGallery;
-    $main_view->show($galleryName, $images);
+    $main_view->show($galleryName, $images, $tags);
   }
 
   //Add image to a gallery 
@@ -271,6 +269,16 @@ class UserController
     $main_view->show($results, $username, $image);
   }
 
+  //filter images with tags on the index page
+  function filter_tag_index() {
+    $filteredResults = $this->user_model->filter_by_tag();
+    $tags = $this->user_model->get_all_tags();
+    $results = $this->user_model->get_all_galleries();
+    $main_view = new FilterTagIndex;
+    $main_view->show($results, $tags, $filteredResults);
+  }
+
+ 
   //Reset pass?
   function reset()
   {
