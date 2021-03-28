@@ -334,10 +334,10 @@ class UserModel
     if (isset($_POST['submit'])) {
       $tag = $_POST["tag"];
 
-      $sql = "UPDATE final_img_tags SET fk_tag_id = '$tag' WHERE fk_img_id = " . $_GET["id"] . " ";
+      $sql = "UPDATE final_img_tags SET fk_tag_id = '$tag' WHERE fk_img_id = " . $_GET["img_id"] . " ";
 
-      echo "SQL:" . $sql . "<br>";
-      echo "<hr>";
+      // echo "SQL:" . $sql . "<br>";
+      // echo "<hr>";
       $result = $this->conn->query($sql);
       return $result;
     }
@@ -397,8 +397,7 @@ class UserModel
     session_start();
     if ($_GET["id"]) {
       $sql = "SELECT * FROM final_gallery WHERE fk_user_id = '" . $_SESSION['pk_user_id'] . "' AND pk_gallery_id = '" . $_GET["id"] . "'";
-     //echo "SQL:" . $sql . "<br>";
-     // echo "<hr>";
+     
       $result = $this->conn->query($sql);
 
       $galleryInfo = array();

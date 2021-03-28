@@ -3,8 +3,9 @@
     justify-content: space-around;
 }
 .left {
-    max-width: 250px;
-    margin-right: 2%;
+    max-width: 30%;
+    margin-right: 5%;
+    margin-left: 5%;
 }
 .left .left__container {
     display: flex;
@@ -19,7 +20,7 @@
     
 }
 .left .right__container h2 {
-    width: 300px;
+   width: 300px;
     
 }
 .left .left__container .left__image {
@@ -27,62 +28,6 @@
     border-radius: 50%;
     background-color: #000;
 }
-
-.right {
-   margin-left: 3%;
-    margin-right: 5%;
-  
-}
-
-.right .right__container {
-    
-    margin-top: 9.5%;
-    max-width: 290px;
-
-}
-
-.right .right__container .row .tags{
-    margin-bottom: 3%;
-justify-content: center;
-text-align: center;
-}
-
-.right .right__container .row .tags_all{
-    margin-bottom: 3%;
-justify-content: center;
-text-align: center;
-}
-
-.right .right__container .row .tags_all button {
-  border: none;
-  border-radius: 5px;
-  background-color: #484BDB;
-  padding: 3px 130px;
-
-}
-
-.right .right__container .row .tags_all button a {
-    color: #fff;
-    text-decoration: none;;
-}
-
-.right .right__container .row .tags button {
-    border: none;
-    border-radius: 5px;
-    background-color: #484BDB;
-    padding: 3px 10px;
-  
-  
-  }
-
-.right .right__container .row .tags button a {
-    color: #fff;
-    text-decoration: none;;
-}
-
-
-
-
 
 
 .left .left__container .left__buttons {
@@ -93,7 +38,7 @@ text-align: center;
 
 .left .left__container .left__buttons button {
     margin-top: 5%;
-    width: 150px;
+    width: 200px;
     height: 45px;
     border-radius: 5px;
     background-color: #000;
@@ -109,10 +54,14 @@ text-align: center;
     
 }
 .middle {
-    width: 800px;
+    max-width: 70%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin: 0 auto;
+
 }
 .middle_gallery_img {
-    width: 377px;
+    max-width: 397px;
     
 }
 .middle .gallery {
@@ -120,13 +69,13 @@ text-align: center;
 }
 .gallery .gallery_images--top {
     padding-top: 20px;
-    max-width: 380px;
+    max-width: 400px;
 }
 
 .gallery .gallery_images {
     padding-top: 10px;
     border: 1px solid #707070;
-    max-width: 380px;
+  
    
     
 }
