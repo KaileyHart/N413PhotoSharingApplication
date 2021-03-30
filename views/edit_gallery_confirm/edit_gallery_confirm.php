@@ -18,7 +18,7 @@ class EditGalleryConfirm extends MainView  {
             <a href="index.php?action=register"><button class="btn btn-dark mt-5">Try Again</button></a>';
         }
 
-        print_r($result);
+        //print_r($result);
         //echo "$result[0]['gallery_name']";
 ?>
 
@@ -33,17 +33,7 @@ class EditGalleryConfirm extends MainView  {
 </div>
 
 
-
-
-
-
-
-
 <?php
         parent::footer();
     }
-
-
-	
-
 }

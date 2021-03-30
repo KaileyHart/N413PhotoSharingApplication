@@ -22,7 +22,6 @@ class LogoutConfirm extends MainView
     parent::header();
     ?>
 
-<p></p>
     <?php
  
  if(isset($_SESSION["pk_user_id"])){

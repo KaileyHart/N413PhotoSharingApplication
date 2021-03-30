@@ -15,8 +15,8 @@ class RegisterConfirm extends MainView
    
     parent::header();
 
-    echo "<pre>";
-    echo "</pre>";
+    // echo "<pre>";
+    // echo "</pre>";
 
     //echo "<p>The last user added was: " . $username['username'] . "</p>";
 

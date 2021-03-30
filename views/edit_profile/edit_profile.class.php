@@ -10,10 +10,8 @@ class EditProfile extends MainView
 {
     function show($results, $username, $image)
     {
-
-
-
         parent::header();
+
         if (!isset($_SESSION["pk_user_id"])) {
             echo '<h3>You are not logged in. Check your credentials and try again.</h3>
             <a href="index.php?action=register"><button class="btn btn-dark mt-5">Try Again</button></a>';
@@ -45,12 +43,7 @@ class EditProfile extends MainView
 
                 </div>
             </div>
-
-
-
         </div>
-
-
 
 
 <?php

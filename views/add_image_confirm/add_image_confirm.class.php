@@ -17,7 +17,7 @@ class AddImageConfirm extends MainView
             <a href="index.php?action=register"><button class="btn btn-dark mt-5">Try Again</button></a>';
         }
 
-        print_r($result);
+        //print_r($result);
 ?>
 
 

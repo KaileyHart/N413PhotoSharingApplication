@@ -8,10 +8,6 @@
 
 class MainView
 {
-  function __construct() 
-  {
-    
-  }
 
   //Header Template
   function header()
@@ -39,12 +35,12 @@ class MainView
 
 
 
-      <script>
+      <!-- <script>
         function navbar_update(this_page) {
           $('#' + this_page + "_item").addClass('active');
           $('#' + this_page + "_link").append('<span class="sr-only">(current)</span>');
         };
-      </script>
+      </script> -->
 
       <style>
 
@@ -126,15 +122,10 @@ class MainView
 
 
 
+   
     <?php
   }
 
-  function content()
-  {
-    ?>
-      <h2>This is the page content</h2>
-    <?php
-  }
 
 
   function footer()

@@ -18,10 +18,8 @@ class EditGallery extends MainView
             <a href="index.php?action=register"><button class="btn btn-dark mt-5">Try Again</button></a>';
         }
 ?>
-        <!-- <h2><?php $galleryId = (isset($_GET['id']) ? $_GET['id'] : '');
-                    echo "Edit "  . $galleryName[0]['gallery_name'] . " <br> ID: " .  $galleryId;
-                    ?> </h2>
-   <p>This is where I will be able to edit name and delete gallery and delete images in a gallery</p> -->
+
+
         <div class="gallery__container">
 
             <div class="left">

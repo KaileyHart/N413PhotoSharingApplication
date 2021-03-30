@@ -12,16 +12,13 @@ class SingleGallery extends MainView
     {
         parent::header();
 
-
-
-
         if (!isset($_SESSION["pk_user_id"])) {
             echo '<h3>Uh oh...You ar\'t logged in. Check your credentials and try again.</h3>
             <a href="index.php?action=register"><button class="btn btn-dark mt-5">Try Again</button></a>';
         }
 ?>
-        <div class="gallery__container">
 
+        <div class="gallery__container">
             <div class="left">
                 <div class="right__container">
                     <div style="display: flex; align-items: center; margin-left: 5%;">
@@ -32,18 +29,14 @@ class SingleGallery extends MainView
                         </a>
                         <h2><?= $galleryName[0]["gallery_name"]; ?></h2>
                     </div>
-
-
                 </div>
 
                 <div class="left__container">
                     <div class="left__buttons">
-
                         <button><a href="index.php?action=add_image&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"> + Add Image</a> </button>
                         <!-- <button><a href="index.php?action=edit_gallery_name&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"">Edit Gallery</a> </button> -->
                         <button><a href="index.php?action=edit_gallery&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"">Edit Gallery</a> </button>
                     </div>
-
                 </div>
             </div>
 

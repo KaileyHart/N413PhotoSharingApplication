@@ -1,4 +1,4 @@
-p<?php
+<?php
 /*
  * Author: Kailey Hart
  * Date: 02-12-2021
@@ -123,6 +123,7 @@ class UserModel
 
   function profile()
   {
+    
   }
 
   function edit_profile()
@@ -161,7 +162,7 @@ class UserModel
     $tempname = $_FILES["image"]["tmp_name"];
     $folder = "../../upload/" . $image;
 
-    $sql = "UPDATE final_users SET user_img = '$image' WHERE pk_user_id = " . $_GET["id"] . " ";
+    $sql = "UPDATE final_users SET user_img = '$folder' WHERE pk_user_id = " . $_GET["id"] . " ";
     echo "SQL:" . $sql . "<br>";
     echo "<hr>";
 

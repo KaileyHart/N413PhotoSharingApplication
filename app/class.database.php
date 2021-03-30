@@ -19,8 +19,16 @@ class Database
     'userTbl' => 'final_users',
     'galleryTbl' => 'final_gallery',
     'imgTbl' => 'final_images'
-    
 
+
+  // 'hostname' => 'localhost',
+  // 'user' => 'kalyhart',
+  // 'password' => 'silurian remounts loosed nark',
+  // 'database' => 'kalyhart_db',
+  // 'userTbl' => 'final_users',
+  // 'galleryTbl' => 'final_gallery',
+  // 'imgTbl' => 'final_images'
+  
   );
 
   //Database connection & instance
