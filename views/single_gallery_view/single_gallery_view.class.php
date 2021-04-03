@@ -8,8 +8,10 @@
 
 class SingleGallery extends MainView
 {
+   
     function show($galleryName, $images, $tags)
     {
+       
         parent::header();
 
         if (!isset($_SESSION["pk_user_id"])) {
@@ -43,11 +45,10 @@ class SingleGallery extends MainView
 
 
             <div class=" middle">
-                                <h2>Gallery Images</h2>
                                 <div class=" gallery">
                                     <?php
 
-                                    $width_large = 1;
+                                    // $width_large = 1;
                                     $row_count = 0;
 
                                     if ($images === 0) {
@@ -61,7 +62,7 @@ class SingleGallery extends MainView
                             <div class='gallery_images '>
                             <div class='gallery_images--info'>
                             <p>" . $image['img_alt'] . "</p> <p class='gallery_images--tag'> " . $image['tag_name'] . " </p></div>
-                            <img class='middle_gallery_img' alt='" . $image["img_alt"] . "' src='" . $image["img_path"] . "' / ></div></div></div> ";
+                            <img id='img' class='middle_gallery_img' alt='" . $image["img_alt"] . "' src='" . $image["img_path"] . "' / ></div></div></div> ";
                                         }
                                     }
                                     echo '</div>';
@@ -70,6 +71,17 @@ class SingleGallery extends MainView
                                 </div>
                     </div>
                 </div>
+                <script>
+                document.getElementById("img").onclick = function() {
+                  
+                    console.log("clicked");
+                   
+                } 
+
+                    
+                
+                </script>
+               
         <?php
 
 

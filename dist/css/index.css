@@ -2,6 +2,33 @@ body {
     background-color: #f4f5f7;
 }
 
+footer {
+    margin-top: 200px;
+}
+
+h2 {
+    font-family: 'Pacifico', cursive;
+}
+h3 {
+    font-family: 'Pacifico', cursive;
+}
+
+.nav-li {
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.nav-li:hover {
+    color: #484BDB;
+}
+
+.index_right h4 {
+    margin-top: 50px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
 
 
 .middle_index_img {
@@ -13,7 +40,9 @@ body {
 }
 .index .index_images {
     padding-top: 10px;
-    border: 1px solid #707070;
+    border: 1px solid #c2c2c2;
+    box-shadow: 5px 5px 10px #c2c2c2;
+    background-color: #fff;;
     
 }
 
@@ -26,21 +55,28 @@ body {
 }
 
 .index .index_images .index_images--info .index_images--tag {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 0px 15px;
 }
 
 .index .index_images .index_images--info-tag {
     display: flex;
     justify-content: space-between;
+    font-size: 18px;
+    font-family: 'Source Sans Pro', sans-serif;
     
 }
 
-.index .index_images .index_images--info-user {
+.index .index_images .index_images--info-user  {
     display: flex;
     justify-content: space-between;
-    
+}
+
+.index .index_images .index_images--info-user p  {
+    margin-left: 5px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
 }
 
  .user_img {
@@ -80,6 +116,8 @@ body {
     margin-top: 9.5%; 
 }
 
+
+
 .index_right .index_right__container .row .tags{
     margin-bottom: 3%;
 justify-content: center;
@@ -100,9 +138,13 @@ text-align: center;
 
 }
 
+
 .index_right .index_right__container .row .tags_all button a {
     color: #fff;
-    text-decoration: none;;
+    text-decoration: none;
+    
+    font-size: 18px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .index_right .index_right__container .row .tags button {
@@ -110,6 +152,7 @@ text-align: center;
     border-radius: 5px;
     background-color: #484BDB;
     padding: 3px 10px;
+    box-shadow: 2px 3px 5px #c2c2c2;
   
   
   }
@@ -121,11 +164,12 @@ text-align: center;
 
 
 .index_images--tag {
-    border: 1px solid black;
-    border-radius: 10px;
+    /* border: 1px solid black; */
+    border-radius: 5px;
     padding: 0px 15px;
     background-color: #484BDB;
     color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 

@@ -10,7 +10,7 @@ class LoginConfirm extends MainView
 {
     function show()
     {
-        print_r($_SESSION["pk_user_id"]);
+        
         parent::header();
         if(isset($_SESSION["pk_user_id"])){
             echo '<div style="max-width: 900px; display: flex;flex-direction: column;   margin: 0 auto; text-align: center;">
@@ -23,14 +23,7 @@ class LoginConfirm extends MainView
                   <a href="index.php?action=login"><button class="btn btn-dark mt-5">Try Again</button></a>';
         }
 ?>
-
-
-           
-
-      
-               
-       
-         
+   
 <?php
         parent::footer();
     }

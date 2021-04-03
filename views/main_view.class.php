@@ -19,7 +19,7 @@ class MainView
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-      <title>Phototastic</title>
+      <title class="title">Phototastic</title>
 
       <!--JQuery-->
       <script src="dist/js/jquery-3.5.1.min.js" type="application/javascript"></script>
@@ -28,7 +28,10 @@ class MainView
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
       <!--Font Awesome -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      
+      <!--Fonts-->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Source+Sans+Pro:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+      <!--Styles-->
       <link rel="stylesheet" href="dist/css/profile.css" type="text/css"/>
       <link rel="stylesheet" href="dist/css/single_gallery.css" type="text/css"/>
       <link rel="stylesheet" href="dist/css/index.css" type="text/css"/>
@@ -79,23 +82,49 @@ class MainView
     </head>
 
     <body>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand title" href="index.php">Phototastic</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav> -->
+
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-center">
-        <a class="navbar-brand" href="index.php">Phototastic</a>
+        <a class="navbar-brand title" href="index.php">Phototastic</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <!-- <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li> -->
-          </ul>
           <ul class="navbar-nav  ms-auto">
-            <li class="nav-item">
-              <a class="nav-link nav-icons-plus active" href="index.php?action=add_gallery"><i class="fa fa-fw fa-plus"></i></a>
-            </li>
-            <li class="nav-item dropdown">
+          <?php 
+                if(isset($_SESSION["pk_user_id"])) {
+                  echo "<li><a class='nav-item nav-li ' href='index.php?action=profile'>Profile</a></li>
+                        <li><a class='nav-item nav-li' href='index.php?action=logout_confirm'>Logout</a></li>
+                  ";
+                } else {
+                  echo "<li><a class='nav-item nav-li' href='index.php?action=login'>Login</a></li>
+                  <li><a class='nav-item nav-li' href='index.php?action=register'>Register</a></li>";
+                }
+              ?> 
+
+            <!-- <li class="nav-item dropdown">
               <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-fw fa-user-circle"></i><span class="sr-only">
               </button>
@@ -112,17 +141,13 @@ class MainView
                 }
               ?> 
               </ul>
-            </li>
+            </li> -->
           </ul>
 
         </div>
       </nav>
-      <div class="space"></div>
+     
 
-
-
-
-   
     <?php
   }
 
@@ -133,6 +158,7 @@ class MainView
     ?>
 
     </body>
+    <footer></footer>
 
     </html>
 <?php

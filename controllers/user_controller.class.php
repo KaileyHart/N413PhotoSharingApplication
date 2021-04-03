@@ -197,12 +197,13 @@ class UserController
   //Shows user profile
   function profile()
   {
+    $galleryPreviews = $this->user_model->gallery_preview();
     $results = $this->user_model->get_single_user_galleries();
     $username = $this->user_model->get_last_username();
     $image = $this->user_model->get_profile_img();
     $this->user_model->profile();
     $main_view = new Profile;
-    $main_view->show($results, $username, $image);
+    $main_view->show($results, $username, $image, $galleryPreviews);
   }
 
   //Edit profile page 

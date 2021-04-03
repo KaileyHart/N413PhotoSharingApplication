@@ -22,8 +22,6 @@ class AddImageConfirm extends MainView
 
 
 
-<div >
-
 <div style="max-width: 900px; display: flex;flex-direction: column;   margin: 0 auto; text-align: center;">
     <h2 style="margin-bottom: 30px; margin-top: 30px; ">You successfully uploaded an image!</h2>
     
@@ -33,7 +31,6 @@ class AddImageConfirm extends MainView
 
 
 
-</div>
 
 
 

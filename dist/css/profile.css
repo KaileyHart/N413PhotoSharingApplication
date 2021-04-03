@@ -1,79 +1,145 @@
 .profile__container {
-    display: flex;
-    justify-content: space-around;
-    margin-left: 5%;
-    margin-right: 5%;
+  display: flex;
+  justify-content: space-around;
+  margin-left: 5%;
+  margin-right: 5%;
+  
+}
+
+.profile__container #submit {
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.profile__container #form-container {
+    margin-top: 50px;
 }
 
 .edit_left {
-min-width: 500px;
-    max-width: 900px;
+  min-width: 500px;
+  max-width: 900px;
+
 }
 
 .profile_left .profile_left__container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .edit_left .edit_left__container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin-top: 100px;
+}
+
+.edit_left h2 {
+    margin-left: 20px;
+}
+.edit_left h3 {
+    margin-left: 20px;
+    font-family: 'Pacifico', cursive;
+
 }
 
 .left_user_image--container {
-    height: 300px;
-    max-width: 300px; 
-    overflow: hidden;
-    border-radius: 50%;
-} 
+  height: 300px;
+  max-width: 300px;
+  overflow: hidden;
+  border-radius: 50%;
+}
 
 .edit_left_user_image--container {
-    height: 400px;
-    max-width: 400px; 
-    overflow: hidden;
-    border-radius: 50%;
-} 
+  height: 400px;
+  max-width: 400px;
+  overflow: hidden;
+  border-radius: 50%;
+}
 .edit_left_user_image {
-    width: 400px;
+  width: 400px;
 }
 
 .left_user_image {
-    width: 300px;
+  width: 300px;
 }
 
 .profile_left .profile_left__container .profile_left__buttons {
-    display: flex;
-    flex-direction: column;
-    margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+}
 
-}
+
+
 .edit_left .edit_left__container .edit_left__buttons {
-    display: flex;
-    flex-direction: column;
-    margin-left: 15%;
-    margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 15%;
+  margin-top: 5%;
 }
+
+.edit_left .edit_left__container .edit_left__buttons p {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .edit_left .edit_left__container .edit_left__buttons button {
-    margin-top: 5%;
-    width: 150px;
-    height: 45px;
-    border-radius: 5px;
-    background-color: #fff;;
+  margin-top: 5%;
+  width: 150px;
+  height: 45px;
+  border-radius: 5px;
+  background-color: #fff;
 }
 
 .profile_left .profile_left__container .profile_left__buttons button {
-    margin-top: 5%;
-    width: 150px;
-    height: 45px;
-    border-radius: 5px;
-    background-color: #000;
-    border: none;
+  margin-top: 5%;
+  width: 150px;
+  height: 45px;
+  border-radius: 5px;
+  background-color: #000;
+  border: none;
 }
 
 .profile_left .profile_left__container .profile_left__buttons button a {
-    font-size: 16px;
-    color: #fff;
-    text-decoration: none;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: bold;
 }
 
+.gallery {
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery--preview {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery--img p {
+  color: #000;
+  margin-top: 50px;
+}
+
+.gallery--preview a {
+  text-decoration: none;
+}
+
+.title {
+  font-family: "Pacifico", cursive;
+  font-size: 25px;
+}
+
+.profile_left__buttons p {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.gallery--img-a p {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+}

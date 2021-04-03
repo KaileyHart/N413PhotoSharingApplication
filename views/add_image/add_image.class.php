@@ -11,7 +11,7 @@ class AddImage extends MainView
 {
     function show($galleryName)
     {
-        echo "gallery name: " . $galleryName[0]['gallery_name'];
+        //echo "gallery name: " . $galleryName[0]['gallery_name'];
         parent::header();
 ?>
         <div style="margin-left: 30%; display: flex; align-items: center;">

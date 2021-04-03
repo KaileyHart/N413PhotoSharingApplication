@@ -47,7 +47,7 @@ class FilterTagIndex extends MainView
                             echo "No images were found. Please add one.";
                         } else {
                             echo '<div class="row">';
-                            echo "<div class='tags_all'> <button ><a href='index.php'>all</a></button> </div>";
+                            echo "<div class='tags_all'> <a href='index.php'><button >all</button></a> </div>";
 
                             foreach ($tags as $tag) {
                                 $row_count++;

@@ -51,7 +51,6 @@ class EditGallery extends MainView
 
 
             <div class=" middle">
-                                    <h2>Gallery Images</h2>
                                     <div class="gallery">
                                         <?php
                                         if ($images === 0) {
@@ -76,10 +75,10 @@ class EditGallery extends MainView
                             </div>
                             <div style='margin-bottom: 10px; display: flex;justify-content: space-between;;align-items: center;'>
                           <div>
-                            <button style='margin-left: 15px; background-color: #ff0000; border: none; border-radius: 5px;'><a style='color: #fff; text-decoration: none;' href='index.php?action=delete_image&id=$imgId' > Delete</a></button>
+                            <button style='margin-left: 20px; background-color: #ff0000; border: none; border-radius: 5px;'><a style='color: #fff; text-decoration: none;' href='index.php?action=delete_image&id=$imgId' > Delete</a></button>
                             </div>
                             <div>
-                            <button style='margin-right: 15px; background-color:#484BDB; border: none; border-radius: 5px;'><a style='color: #fff; text-decoration: none;' href='index.php?action=edit_img_tag&img_id=$imgId'>Edit Tag</a></button>
+                            <button style='margin-right: 15px; background-color:#000; border: none; border-radius: 5px;'><a style='color: #fff; text-decoration: none;' href='index.php?action=edit_img_tag&img_id=$imgId'>Edit Tag</a></button>
                             </div>
                            
                             </div>
