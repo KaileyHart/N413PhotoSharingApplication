@@ -311,10 +311,10 @@ class UserModel
   {
     session_start();
     if (isset($_GET['id'])) {
-      print_r($_GET['id']);
+      //print_r($_GET['id']);
       $sql = "DELETE FROM final_images WHERE pk_img_id =" . $_GET['id'] . "";
       //echo "SQL:" . $sql . "<br>";
-      print_r($sql);
+      //print_r($sql);
       //echo "<hr>";
       $result = $this->conn->query($sql);
       return $result;

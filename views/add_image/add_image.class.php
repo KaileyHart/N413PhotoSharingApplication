@@ -15,7 +15,7 @@ class AddImage extends MainView
         parent::header();
 ?>
         <div style="margin-left: 30%; display: flex; align-items: center;">
-            <a href="index.php?action=single_gallery_view&id=<?= $galleryName[0]["pk_gallery_id"]; ?>" style="margin-right: 2%; color: black">
+            <a style="color: #000; margin-top: 50px; margin-right: 20px;" href="index.php?action=single_gallery_view&id=<?= $galleryName[0]["pk_gallery_id"]; ?>" style="margin-right: 2%; color: black">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
                     <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
                 </svg>

@@ -23,6 +23,7 @@
 .profile_left .profile_left__container {
   display: flex;
   justify-content: space-between;
+  margin-top: 50px;
 }
 
 .edit_left .edit_left__container {
