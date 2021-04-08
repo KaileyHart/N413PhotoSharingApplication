@@ -537,7 +537,8 @@ class UserModel
     AND t.pk_tag_id = it.fk_tag_id
     AND g.pk_gallery_id = i.fk_gallery_id
     AND g.fk_user_id = u.pk_user_id
-    AND g.isPrivate = 0";
+    AND g.isPrivate = 0 
+    ORDER BY i.pk_img_id DESC";
 
 
     $results = $this->conn->query($sql);
