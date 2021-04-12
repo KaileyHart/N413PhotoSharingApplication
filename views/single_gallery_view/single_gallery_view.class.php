@@ -35,9 +35,9 @@ class SingleGallery extends MainView
 
                 <div class="left__container">
                     <div class="left__buttons">
-                        <button><a href="index.php?action=add_image&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"> + Add Image</a> </button>
-                        <!-- <button><a href="index.php?action=edit_gallery_name&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"">Edit Gallery</a> </button> -->
-                        <button><a href="index.php?action=edit_gallery&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"">Edit Gallery</a> </button>
+                       <a href="index.php?action=add_image&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"> <button> + Add Image </button></a>
+                        
+                        <a href="index.php?action=edit_gallery&id=<?= $galleryName[0]["pk_gallery_id"]; ?>""><button>Edit Gallery </button></a>
                     </div>
                 </div>
             </div>

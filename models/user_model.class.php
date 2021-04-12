@@ -39,19 +39,23 @@ class UserModel
       $password = '';
       $lastname = '';
       $firstname = '';
+      
 
       $username = trim(filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING));
       $password = trim(filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
       $firstname = trim(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING));
       $lastname = trim(filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_STRING));
 
-      $image = $_FILES['image']['name'];
+      
+      //if no user image -> default img as a placeholder
+      if($image = " ") {
+        $image = "phototasticUser.jpg";
+      } else {
+        $image = $_FILES['image']['name'];
+      } 
+
       $tempname = $_FILES["image"]["tmp_name"];
       $folder = "../../upload/" . $image;
-
-
-      //if no user image -> default img as a placeholder?
-
 
       //encode the password
       $hash = password_hash($password, PASSWORD_DEFAULT);

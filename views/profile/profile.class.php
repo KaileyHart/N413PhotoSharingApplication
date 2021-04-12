@@ -37,8 +37,8 @@ class Profile extends MainView
                     </div>
                     <div class="profile_left__buttons">
                         <p><b> <?= $username['username'] ?></b></p>
-                        <a href="index.php?action=add_gallery"><button> + Add gallery </button></a> 
-                       <a href="index.php?action=edit_profile"> <button>Edit Profile</button></a> 
+                        <a href="index.php?action=add_gallery"><button> + Add gallery </button></a>
+                        <a href="index.php?action=edit_profile"> <button>Edit Profile</button></a>
                     </div>
 
                 </div>
@@ -56,10 +56,12 @@ class Profile extends MainView
                     if ($results === 0) {
                         echo "No galleries were found. Please add one.";
                     } else {
-                       
+
                         foreach ($results as $result) {
                             echo "<div class='gallery--preview'>";
+
                             $galleryId = $result['pk_gallery_id'];
+                            //echo "$galleryId";
                             echo "
 
                     
@@ -79,7 +81,7 @@ class Profile extends MainView
                             AND t.pk_tag_id = it.fk_tag_id
                             AND i.fk_gallery_id = $galleryId
                             LIMIT 6";
-                            
+
                             $results = $this->conn->query($sql);
 
                             $previewImages = array();
@@ -88,20 +90,23 @@ class Profile extends MainView
                                 $previewImages[] = $row;
                             }
 
-
-                            foreach ($previewImages as $previewImage ) {
-                          
-
-                                echo "<img class='profile_middle_gallery_img'id='" . $previewImage["pk_img_id"] . "' alt='" . $previewImage["img_alt"] . "' src='" . $previewImage["img_path"] . "' / ></a>
-                               ";
-                           
+                            foreach ($previewImages as $previewImage) {
+                                // if ($previewImage["fk_gallery_id"] != $galleryId ) {
+                                //     echo "No images were found. Please add one.";
+                                //     print($previewImage["fk_gallery_id"]);
+                                // } else {
+                                   // print($previewImage["fk_gallery_id"] );
+                                    //print($result['pk_gallery_id']);
+                                    echo "<img class='profile_middle_gallery_img'id='" . $previewImage["pk_img_id"] . "' alt='" . $previewImage["img_alt"] . "' src='" . $previewImage["img_path"] . "' / ></a>
+                                    ";
+                                //}
                             }
                         }
                     }
 
                     ?>
                 </div>
-               
+
             </div>
 
             <div class="right">
