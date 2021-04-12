@@ -3,9 +3,11 @@
   justify-content: space-around;
 }
 
+
 .gallery__container .left .left__container .left__buttons button {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: bold;
+  color: #fff;
 }
 
 .left {
@@ -45,6 +47,7 @@
   border-radius: 5px;
   background-color: #000;
   border: none;
+  color: #fff;
 }
 
 .left .left__container .left__buttons button a {

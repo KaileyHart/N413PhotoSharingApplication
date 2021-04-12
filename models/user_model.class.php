@@ -123,18 +123,24 @@ class UserModel
 
   function profile()
   {
-    
   }
 
   function edit_profile()
   {
   }
+
   function edit_profile_username()
   {
   }
+
   function edit_profile_image()
   {
   }
+
+  function edit_gallery_privacy()
+  {
+  }
+
 
   //Edit user profile
   function edit_profile_username_confirm()
@@ -343,7 +349,6 @@ class UserModel
 
   function display_single_gallery_images()
   {
-
     $galleryId = (isset($_GET['id']) ? $_GET['id'] : '');
     //Select all from final_images, final_tags, & final_img_tags where he id's match
     $sql = "SELECT *
@@ -365,6 +370,20 @@ class UserModel
    // print_r($images);
   }
 
+  function edit_gallery_privacy_confirm()
+  {
+    $isPrivate = trim(filter_input(INPUT_POST, "isPrivate", FILTER_SANITIZE_STRING));
+   
+
+    session_start();
+    if ($_GET["id"]) {
+      $sql = "UPDATE " . $this->db->getGalleryTable() . " SET isPrivate = '$isPrivate' WHERE pk_gallery_id= " . $_GET["id"] . "";
+
+      $result = $this->conn->query($sql);
+
+      return $result;
+    }
+  }
 
   function edit_gallery_confirm()
   {

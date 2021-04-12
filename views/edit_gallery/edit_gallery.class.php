@@ -39,10 +39,13 @@ class EditGallery extends MainView
                 <div class="left__container">
                     <div class="left__buttons">
 
-                        <button><a href="index.php?action=add_image&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"> + Add Image</a> </button>
-                        <button><a href="index.php?action=edit_gallery_name&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"">Edit Gallery Name</a> </button>
+                       <a href="index.php?action=add_image&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"> <button> + Add Image</button></a> 
+
+                       <a href="index.php?action=edit_gallery_name&id=<?= $galleryName[0]["pk_gallery_id"]; ?>""> <button>Edit Gallery Name</button></a> 
+
+                        <a href="index.php?action=edit_gallery_privacy&id=<?= $galleryName[0]["pk_gallery_id"]; ?>""><button>Edit Gallery Privacy </button></a>
                        
-                        <button style=" background-color: #ff0000;"><a href="index.php?action=delete_gallery&id=<?= $galleryName[0]["pk_gallery_id"]; ?>"">Delete Gallery</a> </button>
+                       <a href="index.php?action=delete_gallery&id=<?= $galleryName[0]["pk_gallery_id"]; ?>""> <button style=" background-color: #ff0000; color: #fff;">Delete Gallery </button></a>
                     </div>
 
                 </div>

@@ -29,6 +29,8 @@ require_once('views/add_gallery_confirm/add_gallery_confirm.class.php');
 require_once('views/edit_gallery/edit_gallery.class.php');
 require_once('views/edit_gallery_confirm/edit_gallery_confirm.php');
 require_once('views/edit_gallery_name/edit_gallery_name.class.php');
+require_once('views/edit_gallery_privacy/edit_gallery_privacy.class.php');
+require_once('views/edit_gallery_privacy_confirm/edit_gallery_privacy_confirm.class.php');
 require_once('views/single_gallery_view/single_gallery_view.class.php');
 require_once('views/delete_gallery_confirm/delete_gallery_confirm.class.php');
 //Tags
@@ -133,6 +135,20 @@ class UserController
     $galleryName = $this->user_model->single_gallery_view();
     $main_view = new EditGalleryName;
     $main_view->show($galleryName);
+  }
+
+  function edit_gallery_privacy()
+  {
+    $galleryName = $this->user_model->single_gallery_view();
+    $main_view = new EditGalleryPrivacy;
+    $main_view->show($galleryName);
+  }
+
+  function edit_gallery_privacy_confirm()
+  {
+    $result = $this->user_model->edit_gallery_privacy_confirm();
+    $main_view = new EditGalleryPrivacyConfirm;
+    $main_view->show($result);
   }
 
   function edit_gallery_confirm()

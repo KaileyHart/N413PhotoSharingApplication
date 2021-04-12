@@ -37,8 +37,8 @@ class Profile extends MainView
                     </div>
                     <div class="profile_left__buttons">
                         <p><b> <?= $username['username'] ?></b></p>
-                        <button><a href="index.php?action=add_gallery"> + Add gallery</a> </button>
-                        <button><a href="index.php?action=edit_profile">Edit Profile</a> </button>
+                        <a href="index.php?action=add_gallery"><button> + Add gallery </button></a> 
+                       <a href="index.php?action=edit_profile"> <button>Edit Profile</button></a> 
                     </div>
 
                 </div>

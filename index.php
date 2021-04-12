@@ -6,17 +6,6 @@
  * Description: The homepage and the bootstrap file.
 */
 
-
-// require_once("classes/class.database.php");
-// require_once("templates/head.php");
-//$database = new Database();
-//$select_login = "SELECT * FROM final_users WHERE pk_user_id = 1";
-//$users = $database->getSQL($select_login);
-//print_r($users);
-//echo "my name is $first_name";
-//echo "Welcome " . $users[0]['first_name'];
-
-//require_once('controllers/user_controller.class.php');
 require_once("vendor/autoload.php");
 
 //create an object of UserController
@@ -83,6 +72,12 @@ switch ($action) {
   case "edit_gallery_name":
     $user_controller->edit_gallery_name();
     break;
+  case "edit_gallery_privacy":
+    $user_controller->edit_gallery_privacy();
+    break;
+    case "edit_gallery_privacy_confirm":
+      $user_controller->edit_gallery_privacy_confirm();
+      break;
   case "edit_gallery_confirm":
     $user_controller->edit_gallery_confirm();
     break;

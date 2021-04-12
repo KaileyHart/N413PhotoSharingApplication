@@ -1,12 +1,12 @@
 <?php
 /*
  * Author: Kailey Hart
- * Date: 03-14-2021
- * Name: edit_gallery_confirm.class.php
- * Description: Confirms gallery update
+ * Date: 04-12-2021
+ * Name: edit_gallery_privacy_confirm.class.php
+ * Description: Confirms gallery update of privacy
 */
 
-class EditGalleryConfirm extends MainView  {
+class EditGalleryPrivacyConfirm extends MainView  {
     
     function show($result)
     {
@@ -17,8 +17,7 @@ class EditGalleryConfirm extends MainView  {
             <a href="index.php?action=register"><button class="btn btn-dark mt-5">Try Again</button></a>';
         }
 
-        //print_r($result);
-        //echo "$result[0]['gallery_name']";
+       
 ?>
 
 
