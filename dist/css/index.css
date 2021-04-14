@@ -43,9 +43,11 @@ h3 {
     width: 600px;
     
 }
+
 .index .index_images--top {
     padding-top: 20px;
 }
+
 .index .index_images {
     padding-top: 10px;
     border: 1px solid #c2c2c2;
@@ -107,7 +109,6 @@ h3 {
 
 .index_container--right {
     max-width: 30%;
-  
 }
 
 .index_container--left {

@@ -32,21 +32,13 @@ class MainView
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Source+Sans+Pro:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
       <!--Styles-->
-      <link rel="stylesheet" href="dist/css/profile.css" type="text/css"/>
-      <link rel="stylesheet" href="dist/css/single_gallery.css" type="text/css"/>
-      <link rel="stylesheet" href="dist/css/index.css" type="text/css"/>
+      <link rel="stylesheet" href="dist/css/profile.css" type="text/css" />
+      <link rel="stylesheet" href="dist/css/single_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="dist/css/index.css" type="text/css" />
+      <link rel="stylesheet" href="dist/css/responsive.css" type="text/css" />
 
-
-
-      <!-- <script>
-        function navbar_update(this_page) {
-          $('#' + this_page + "_item").addClass('active');
-          $('#' + this_page + "_link").append('<span class="sr-only">(current)</span>');
-        };
-      </script> -->
 
       <style>
-
         .space {
           margin-bottom: 2%;
         }
@@ -83,50 +75,32 @@ class MainView
     </head>
 
     <body>
- 
-
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-center ">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark  ">
         <a class="navbar-brand title" href="index.php">Phototastic</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
+        <span class="navbar-toggler-icon"></span>
+          
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-collapse collapse" id="navbar">
           <ul class="navbar-nav  ms-auto">
-          <?php 
-                if(isset($_SESSION["pk_user_id"])) {
-                  echo "<li><a class='nav-item nav-li ' href='index.php?action=profile'>Profile</a></li>
-                        <li><a class='nav-item nav-li' href='index.php?action=logout_confirm'>Logout</a></li>
+            <?php
+            if (isset($_SESSION["pk_user_id"])) {
+              echo "<li  class='nav-item'><a class='nav-link nav-li' href='index.php?action=profile'>Profile</a></li>
+                        <li class='nav-item'><a class='nav-link nav-li' href='index.php?action=logout_confirm'>Logout</a></li>
                   ";
-                } else {
-                  echo "<li><a class='nav-item nav-li' href='index.php?action=login'>Login</a></li>
-                  <li><a class='nav-item nav-li' href='index.php?action=register'>Register</a></li>";
-                }
-              ?> 
-
-            <!-- <li class="nav-item dropdown">
-              <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-fw fa-user-circle"></i><span class="sr-only">
-              </button>
-
-
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <?php 
-                if(isset($_SESSION["pk_user_id"])) {
-                  echo "<li><a class='dropdown-item' href='index.php?action=logout_confirm'>Logout</a></li>
-                  <li><a class='dropdown-item' href='index.php?action=profile'>Profile</a></li>";
-                } else {
-                  echo "<li><a class='dropdown-item' href='index.php?action=login'>Login</a></li>
-                  <li><a class='dropdown-item' href='index.php?action=register'>Register</a></li>";
-                }
-              ?> 
-              </ul>
-            </li> -->
+            } else {
+              echo "<li class='nav-item'><a class='nav-link nav-li' href='index.php?action=login'>Login</a></li>
+                  <li class='nav-item'><a class='nav-link nav-li' href='index.php?action=register'>Register</a></li>";
+            }
+            ?>
           </ul>
 
         </div>
       </nav>
-     
+
+
+
 
     <?php
   }

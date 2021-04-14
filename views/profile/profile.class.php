@@ -36,7 +36,7 @@ class Profile extends MainView
                         <img class="left_user_image" alt="profile image" src="<?= $image['user_img'] ?>">
                     </div>
                     <div class="profile_left__buttons">
-                        <p><b> <?= $username['username'] ?></b></p>
+                        <p style="color: #000;"><b> <?= $username['username'] ?></b></p>
                         <a href="index.php?action=add_gallery"><button> + Add gallery </button></a>
                         <a href="index.php?action=edit_profile"> <button>Edit Profile</button></a>
                     </div>
@@ -51,8 +51,6 @@ class Profile extends MainView
 
                 <div class="gallery">
                     <?php
-
-
                     if ($results === 0) {
                         echo "No galleries were found. Please add one.";
                     } else {
