@@ -1,78 +1,284 @@
-
-
-
 @media (max-width: 1000px) {
+  /****************INDEX ******************/
+  .index_container {
+    flex-direction: column-reverse;
+  }
+  .index_container--right {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  .index_container--center {
+    max-width: 80%;
+    margin: 0 auto;
+  }
 
-    /**INDEX **/
-    .index_container {
-        flex-direction: column-reverse;
-    }
-    .index_container--right {
-        max-width: 80%;
-        margin: 0 auto;
-      
-    }
-    .index_container--center {
-        max-width: 80%;
-        margin: 0 auto;
-      
-    }
+  /******************PROFILE *************/
+  .profile__container {
+    display: flex;
+    flex-direction: column;
+  }
 
-    /**PROFILE **/
-    .profile__container {
-        display: flex;
-        flex-direction: column;
-        
-    }
+  .profile_left__container {
+    margin: 0 auto;
+    max-width: 80%;
+  }
 
-    .profile_left__container {
-        margin: 0 auto;
-        max-width: 80%;
-    }
+  /************EDIT PROFILE *************/
+  .edit_left {
+    margin: 0 auto;
+  }
+
+  .edit_left__container {
+    margin: 0 auto;
+  }
 }
-
-
 
 @media (max-width: 765px) {
-    /**INDEX **/
-    .middle_index_img {
-        width: 400px;
-        transition: 1s ease-in-out;
-    }
+  /***************INDEX ************/
+  .middle_index_img {
+    width: 400px;
+    transition: 1s ease-in-out;
+  }
+
+  /****************PROFILE*****************/
+
+  .profile_left {
+    margin-right: 0px;
+  }
+
+  .profile__container {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+
+  .left_user_image--container {
+    height: 300px;
+    max-width: 300px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  .left_user_image {
+    max-width: 400px;
+  }
+
+  /********* SINGLE GALLERY VIEW **********/
+  .gallery__container {
+    flex-direction: column;
+  }
+
+  .left {
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
+  .left .right__container {
+    margin: 0 auto;
+  }
+
+  .left .right__container h2 {
+    margin-bottom: 50px;
+  }
+
+  .left .left__container .left__buttons button {
+    width: 300px;
+  }
+
+  .gallery .gallery_images--top {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .gallery .gallery_images {
+    max-width: 380px;
+    transition: 1s ease-in-out;
+  }
+
+  .middle_gallery_img {
+    max-width: 377px;
+    transition: 1s ease-in-out;
+  }
+
+  .edit_gallery_left {
+    margin: 0 auto;
+    max-width: 380px;
+    text-align: center;
+   
+  }
+  .edit_gallery_left .right__container  {
+    width: 380px;
+
+  }
+  .edit_gallery_left .right__container h2  {
+    width: 380px;
+
+  }
+  .left .left__container .left__buttons button {
+      width: 380px;
+     
+  }
+
+  .left .left__container .left__buttons {
+    margin-left: 0px;
+  }
+
+  .edit_gallery_left .left__container .left__buttons button {
+      width: 380px;
+  }
 }
 
-
 @media (max-width: 550px) {
-    /**INDEX **/
-    .middle_index_img {
-        width: 300px;
-        transition: 1s ease-in-out;
-        
-    }
+  /**INDEX **/
+  .middle_index_img {
+    width: 300px;
+    transition: 1s ease-in-out;
+  }
 
-    .gallery {
-        margin: 0 auto;
-        max-width: 80%;
-      }
+  .gallery {
+    margin: 0 auto;
+    max-width: 80%;
+  }
+
+  /******************PROFILE***************/
+  .profile_left .profile_left__container {
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  .left_user_image--container {
+    margin: 0 auto;
+  }
+
+  .left_user_image {
+    max-width: 300px;
+  }
+
+  .profile_left .profile_left__container .profile_left__buttons {
+    padding-top: 20px;
+    padding-bottom: 50px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .profile_left .profile_left__container .profile_left__buttons button {
+    width: 300px;
+  }
+
+  .profile_middle_gallery_img {
+    margin: 0 auto;
+    max-height: 150px;
+  }
+
+  .gallery--img {
+    text-align: center;
+  }
+
+  /*********EDIT PROFILE ******************/
+
+  .edit_left {
+    max-width: 80%;
+  }
+  .edit_left .edit_left__container {
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .edit_left_user_image--container {
+    margin-top: 50px;
+  }
+
+  .edit_left_user_image {
+  }
+
+  .edit_left .edit_left__container .edit_left__buttons {
+    padding-top: 20px;
+    padding-bottom: 50px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .edit_left .edit_left__container .edit_left__buttons button {
+    width: 250px;
+  }
+
+  /********* SINGLE GALLERY VIEW **********/
+
+  .left .right__container h2 {
+    width: 200px;
+  }
+
+  .edit_gallery_left {
+    margin: 0 auto;
+    max-width: 40%;
+   
+  }
+
+
+  .left {
+    margin: 0 auto;
+    max-width: 70%;
+  }
+  .left .left__container .left__buttons {
+      margin-left: 10px;
+  }
+
+  .left .left__container .left__buttons button {
+    width: 200px;
+  }
+
+.edit_gallery_left .left__container .left__buttons button {
+    width: 185px;
+}
+
+.edit_gallery_left .right__container  {
+    width: 180px;
+
+  }
+  .edit_gallery_left .right__container h2  {
+    width: 180px;
+
+  }
+
+  .gallery .gallery_images {
+    max-width: 200px;
+    transition: 1s ease-in-out;
+  }
+
+  .middle_gallery_img {
+    max-width: 197px;
+    transition: 1s ease-in-out;
+  }
+  .gallery .gallery_images--top {
+    padding-top: 20px;
+    max-width: 200px;
+  }
 }
 
 @media (max-width: 380px) {
-    /**INDEX **/
-    .index_right .index_right__container .row .tags button a {
-        font-size: 14px;
-    }
-    .index .index_images .index_images--info-tag {
-        font-size: 14px;
-    }
+  /******************INDEX ************/
+  .index_right .index_right__container .row .tags button a {
+    font-size: 14px;
+  }
+  .index .index_images .index_images--info-tag {
+    font-size: 14px;
+  }
 
-    .index .index_images .index_images--info-user p {
-        font-size: 14px;
-    }
+  .index .index_images .index_images--info-user p {
+    font-size: 14px;
+  }
 
-    .middle_index_img {
-        width: 255px;
-        transition: 1s ease-in-out;
-        
-    }
+  .middle_index_img {
+    width: 255px;
+    transition: 1s ease-in-out;
+  }
+
+  /***************PROFILE********************/
+
+  .profile_left .profile_left__container .profile_left__buttons button {
+    width: 250px;
+  }
+
+  /********* SINGLE GALLERY VIEW **********/
+  .left {
+    margin: 0 auto;
+    max-width: 62%;
+  }
 }
-

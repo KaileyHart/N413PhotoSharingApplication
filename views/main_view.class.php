@@ -95,13 +95,8 @@ class MainView
             }
             ?>
           </ul>
-
         </div>
       </nav>
-
-
-
-
     <?php
   }
 

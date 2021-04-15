@@ -15,9 +15,10 @@
 }
 
 .edit_left {
-  min-width: 500px;
-  max-width: 900px;
-
+  /* min-width: 500px;
+  max-width: 900px; */
+  max-width: 80%;
+margin: 0 auto;
 }
 
 .profile_left {
@@ -35,6 +36,7 @@
   justify-content: space-between;
   max-width: 1200px;
   margin-top: 100px;
+  margin: 0 auto;
 }
 
 .edit_left h2 {
@@ -55,13 +57,13 @@
 
 .edit_left_user_image--container {
   height: 400px;
-  max-width: 400px;
+  max-width: 350px;
   overflow: hidden;
   border-radius: 50%;
 }
 
 .edit_left_user_image {
-  width: 400px;
+  max-width: 350px;
 }
 
 .left_user_image {

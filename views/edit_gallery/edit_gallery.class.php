@@ -22,7 +22,7 @@ class EditGallery extends MainView
 
         <div class="gallery__container">
 
-            <div class="left">
+            <div class="edit_gallery_left">
                 <div class="right__container">
                     <div style="display: flex; align-items: center;">
                         <a href="index.php?action=single_gallery_view&id=<?= $_GET['id'] ?>" style="margin-right: 2%; color: black">
